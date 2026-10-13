@@ -151,6 +151,11 @@
             transform: translateX(4px);
         }
 
+        /* Mobile Profile Bar (Hidden on Desktop) */
+        .mobile-profile-bar {
+            display: none;
+        }
+
         /* Main Dashboard Content */
         main {
             margin-left: 280px;
@@ -269,7 +274,7 @@
                         border-color 0.35s ease;
             position: relative;
             overflow: hidden;
-            scroll-margin-top: 3rem; /* Prevents sticky headers from overlapping card on scroll */
+            scroll-margin-top: 3rem;
         }
 
         .bento-card:hover {
@@ -390,6 +395,17 @@
             .bento-grid { grid-template-columns: 1fr; }
             .card-large { grid-column: span 1; }
             .hero-banner { flex-direction: column; gap: 1.5rem; }
+            .mobile-profile-bar {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                background: var(--card-bg);
+                border: 1px solid var(--card-border);
+                padding: 1rem 1.25rem;
+                border-radius: 16px;
+                margin-bottom: 2rem;
+                backdrop-filter: blur(10px);
+            }
         }
     </style>
 </head>
@@ -426,13 +442,27 @@
 
     <!-- Main Dashboard -->
     <main>
+        <!-- Mobile Profile Bar (Visible only on phone screens) -->
+        <div class="mobile-profile-bar">
+            <div class="avatar-container" style="margin-bottom: 0;">
+                <img src="assets/profile.jpg" alt="Profile" class="avatar" style="width: 56px; height: 56px;">
+                <div class="status-dot" style="width: 12px; height: 12px; bottom: 2px; right: 2px;" title="Available for work"></div>
+            </div>
+            <div>
+                <div class="profile-name" style="justify-content: flex-start;">
+                    Your Name 
+                    <i class="fa-solid fa-circle-check verified-badge"></i>
+                </div>
+                <div class="handle" style="text-align: left;">@yourusername</div>
+            </div>
+        </div>
+
         <!-- Home / Hero Section -->
         <div id="home" class="hero-banner" data-aos="fade-down" data-aos-duration="800">
             <div class="hero-title">
                 <h1>Build it once. Run it forever.</h1>
                 <p>Designing streamlined systems, automated web workflows, and high-performance applications that eliminate manual overhead.</p>
             </div>
-            <!-- Update mailto: or link to your messaging URL -->
             <a href="mailto:your.email@example.com" class="cta-btn">
                 <span>Get in touch</span>
                 <i class="fa-solid fa-arrow-right-long"></i>
