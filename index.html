@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Modern Pro Bento</title>
+    
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* Enable Smooth Scrolling Page-Wide */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg-color: #0f172a;
+            --sidebar-bg: #1e293b;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-glow: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --badge-bg: rgba(255, 255, 255, 0.05);
+            --pill-hover: rgba(99, 102, 241, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Ambient Background Glow */
+        .ambient-glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(0,0,0,0) 70%);
+            top: -100px;
+            right: -100px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Sidebar Navigation */
+        aside {
+            width: 280px;
+            background-color: var(--sidebar-bg);
+            border-right: 1px solid var(--card-border);
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: fixed;
+            height: 100vh;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+        }
+
+        .profile-area {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .avatar-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .avatar {
+            width: 84px;
+            height: 84px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .status-dot {
+            width: 14px;
+            height: 14px;
+            background-color: #22c55e;
+            border: 2px solid var(--sidebar-bg);
+            border-radius: 50%;
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            box-shadow: 0 0 8px #22c55e;
+        }
+
+        .profile-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .verified-badge {
+            color: #38bdf8;
+            font-size: 0.9rem;
+        }
+
+        .handle {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.2rem;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            flex-grow: 1;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0.75rem 1rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.25s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: var(--badge-bg);
+            color: var(--text-main);
+            border: 1px solid var(--card-border);
+            transform: translateX(4px);
+        }
+
+        /* Main Dashboard Content */
+        main {
+            margin-left: 280px;
+            flex-grow: 1;
+            padding: 3rem;
+            max-width: 1400px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-banner {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            scroll-margin-top: 3rem;
+        }
+
+        .hero-title h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-title p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 650px;
+            line-height: 1.6;
+        }
+
+        .cta-btn {
+            background: var(--accent-glow);
+            color: #fff;
+            padding: 0.85rem 1.75rem;
+            border-radius: 99px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+        }
+
+        /* Tools Ticker */
+        .tools-ticker {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 0.85rem 1.25rem;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            overflow-x: auto;
+            scroll-margin-top: 3rem;
+        }
+
+        .tools-ticker span {
+            font-weight: 700;
+            color: #6366f1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+        }
+
+        .tool-badge {
+            background: var(--badge-bg);
+            border: 1px solid var(--card-border);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .tool-badge:hover {
+            background: var(--pill-hover);
+            border-color: #6366f1;
+            transform: translateY(-2px);
+        }
+
+        /* Bento Grid Layout */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .bento-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 1.75rem;
+            backdrop-filter: blur(12px);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.35s ease;
+            position: relative;
+            overflow: hidden;
+            scroll-margin-top: 3rem; /* Prevents sticky headers from overlapping card on scroll */
+        }
+
+        .bento-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .card-large { grid-column: span 2; }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .card-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.25rem;
+        }
+
+        /* Clickable Project Item */
+        .project-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-preview {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            transition: all 0.25s ease;
+        }
+
+        .project-preview:hover {
+            background: rgba(99, 102, 241, 0.15);
+            border-color: #6366f1;
+            transform: scale(1.01);
+        }
+
+        /* Stats Counter Box */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .stat-box {
+            background: var(--badge-bg);
+            border: 1px solid var(--card-border);
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #38bdf8;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.2rem;
+        }
+
+        /* Footer / Contact Card */
+        .contact-box {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-btn {
+            background: var(--badge-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .social-btn:hover {
+            background: #6366f1;
+            border-color: #6366f1;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media(max-width: 1024px) {
+            aside { display: none; }
+            main { margin-left: 0; padding: 1.5rem; }
+            .bento-grid { grid-template-columns: 1fr; }
+            .card-large { grid-column: span 1; }
+            .hero-banner { flex-direction: column; gap: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow"></div>
+
+    <!-- Sidebar Navigation -->
+    <aside>
+        <div>
+            <div class="profile-area">
+                <div class="avatar-container">
+                    <img src="assets/profile.jpg" alt="Profile" class="avatar">
+                    <div class="status-dot" title="Available for work"></div>
+                </div>
+                <div class="profile-name">
+                    Your Name 
+                    <i class="fa-solid fa-circle-check verified-badge"></i>
+                </div>
+                <div class="handle">@yourusername</div>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-item active"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="#projects" class="nav-item"><i class="fa-solid fa-folder-open"></i> Projects</a></li>
+                <li><a href="#about" class="nav-item"><i class="fa-solid fa-user"></i> About</a></li>
+                <li><a href="#credentials" class="nav-item"><i class="fa-solid fa-award"></i> Credentials</a></li>
+                <li><a href="#services" class="nav-item"><i class="fa-solid fa-gears"></i> Services</a></li>
+                <li><a href="#contact" class="nav-item"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+            </ul>
+        </div>
+        <div class="handle" style="font-size: 0.75rem; text-align: center;">© 2026 All rights reserved.</div>
+    </aside>
+
+    <!-- Main Dashboard -->
+    <main>
+        <!-- Home / Hero Section -->
+        <div id="home" class="hero-banner" data-aos="fade-down" data-aos-duration="800">
+            <div class="hero-title">
+                <h1>Build it once. Run it forever.</h1>
+                <p>Designing streamlined systems, automated web workflows, and high-performance applications that eliminate manual overhead.</p>
+            </div>
+            <!-- Update mailto: or link to your messaging URL -->
+            <a href="mailto:your.email@example.com" class="cta-btn">
+                <span>Get in touch</span>
+                <i class="fa-solid fa-arrow-right-long"></i>
+            </a>
+        </div>
+
+        <!-- Daily Drivers Ticker -->
+        <div id="tools" class="tools-ticker" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+            <span>Daily Drivers</span>
+            <div class="tool-badge"><i class="fa-brands fa-square-js" style="color: #f7df1e;"></i> JavaScript</div>
+            <div class="tool-badge"><i class="fa-brands fa-python" style="color: #3870a1;"></i> Python</div>
+            <div class="tool-badge"><i class="fa-brands fa-github"></i> GitHub</div>
+            <div class="tool-badge"><i class="fa-solid fa-bolt" style="color: #f59e0b;"></i> Webhooks & Automation</div>
+            <div class="tool-badge"><i class="fa-solid fa-database" style="color: #38bdf8;"></i> Database & APIs</div>
+        </div>
+
+        <!-- Bento Grid Layout -->
+        <div class="bento-grid">
+            
+            <!-- Projects Card -->
+            <div id="projects" class="bento-card card-large" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-header">
+                    <div class="card-title"><i class="fa-solid fa-laptop-code" style="color: #6366f1;"></i> FEATURED PROJECTS</div>
+                    <span style="font-size: 0.8rem; color: #38bdf8; font-weight: 600;">Click to View</span>
+                </div>
+                <div class="card-desc">Production-ready single-file web apps and automated reporting systems.</div>
+                
+                <!-- Clickable Project 1 -->
+                <a href="https://github.com" target="_blank" class="project-link">
+                    <div class="project-preview">
+                        <div>
+                            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem;">Surveillance & Incident Reporting System (SIRS)</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Real-time tracking interface built with HTML5, CSS3, and JavaScript.</p>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square" style="color: #38bdf8;"></i>
+                    </div>
+                </a>
+
+                <!-- Clickable Project 2 -->
+                <a href="https://github.com" target="_blank" class="project-link">
+                    <div class="project-preview">
+                        <div>
+                            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem;">Web-based Time & Attendance Tracker</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Shift logging, break calculation, and automated report generation.</p>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square" style="color: #38bdf8;"></i>
+                    </div>
+                </a>
+            </div>
+
+            <!-- About Card -->
+            <div id="about" class="bento-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-title"><i class="fa-solid fa-user-gear" style="color: #a855f7;"></i> ABOUT</div>
+                <div class="card-desc">Operations & Technical Integration Specialist.</div>
+                
+                <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem;">
+                    Specialized in building lightweight, high-performance web applications and automated workflows that save time and reduce errors.
+                </p>
+
+                <div class="stat-grid">
+                    <div class="stat-box">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Uptime Logic</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">30+</div>
+                        <div class="stat-label">Workflows</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Credentials Card -->
+            <div id="credentials" class="bento-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="card-title"><i class="fa-solid fa-award" style="color: #f59e0b;"></i> CREDENTIALS</div>
+                <div class="card-desc">Verified technical expertise and operational mastery.</div>
+                <ul style="font-size: 0.85rem; color: var(--text-muted); padding-left: 1.2rem; line-height: 2;">
+                    <li>Operations & Systems Specialist</li>
+                    <li>Frontend Application Architecture</li>
+                    <li>Workflow Automation & Webhooks</li>
+                    <li>Database & Excel Scripting</li>
+                </ul>
+            </div>
+
+            <!-- Services Card -->
+            <div id="services" class="bento-card card-large" data-aos="fade-up" data-aos-delay="500">
+                <div class="card-title"><i class="fa-solid fa-rocket" style="color: #38bdf8;"></i> SERVICES</div>
+                <div class="card-desc">Tailored technical solutions for operations and business productivity.</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 0.9rem;">
+                    <div class="tool-badge" style="justify-content: flex-start; padding: 12px;">01. Custom Single-Page Web Apps</div>
+                    <div class="tool-badge" style="justify-content: flex-start; padding: 12px;">02. Process Automation & Webhooks</div>
+                    <div class="tool-badge" style="justify-content: flex-start; padding: 12px;">03. Incident Reporting Systems</div>
+                    <div class="tool-badge" style="justify-content: flex-start; padding: 12px;">04. Data Processing & Excel Scripts</div>
+                </div>
+            </div>
+
+            <!-- Contact Card -->
+            <div id="contact" class="bento-card card-large" data-aos="fade-up" data-aos-delay="600">
+                <div class="card-title"><i class="fa-solid fa-comments" style="color: #22c55e;"></i> LET'S CONNECT</div>
+                <div class="card-desc">Reach out directly via email or social platforms for collaboration.</div>
+                
+                <div class="contact-box">
+                    <a href="mailto:your.email@example.com" class="social-btn" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="https://linkedin.com" target="_blank" class="social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://github.com" target="_blank" class="social-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://facebook.com" target="_blank" class="social-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- AOS Script & Interactive JavaScript -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Scroll Animations
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50
+        });
+
+        // Dynamic Sidebar Active Link Highlighter
+        const navItems = document.querySelectorAll('.nav-item');
+
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                navItems.forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
