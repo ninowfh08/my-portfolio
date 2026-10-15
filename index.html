@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Modern Pro Bento</title>
+    <title>Niño Dermie S. Cagas | Operations & Systems Specialist Portfolio</title>
     
     <!-- Google Fonts & Font Awesome Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -105,7 +105,7 @@
 
         .profile-name {
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -118,7 +118,7 @@
         }
 
         .handle {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: var(--text-muted);
             margin-top: 0.2rem;
         }
@@ -204,6 +204,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            white-space: nowrap;
         }
 
         .cta-btn:hover {
@@ -312,7 +313,7 @@
             text-decoration: none;
             color: inherit;
             display: block;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.85rem;
         }
 
         .project-preview {
@@ -331,6 +332,19 @@
             background: rgba(99, 102, 241, 0.15);
             border-color: #6366f1;
             transform: scale(1.01);
+        }
+
+        /* Custom Emblem Box Showcase */
+        .emblem-showcase {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px dashed var(--card-border);
+            border-radius: 14px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            text-align: center;
         }
 
         /* Stats Counter Box */
@@ -464,26 +478,27 @@
         <div>
             <div class="profile-area">
                 <div class="avatar-container">
-                    <img src="assets/profile.jpg" alt="Profile" class="avatar">
+                    <img src="assets/profile.jpg" alt="Niño Dermie S. Cagas" class="avatar" onerror="this.src='https://api.iconify.design/lucide:user.svg?color=%2394a3b8'">
                     <div class="status-dot" title="Available for work"></div>
                 </div>
                 <div class="profile-name">
-                    Your Name 
-                    <i class="fa-solid fa-circle-check verified-badge"></i>
+                    Niño Dermie Cagas
+                    <i class="fa-solid fa-circle-check verified-badge" title="Verified Professional"></i>
                 </div>
-                <div class="handle">@yourusername</div>
+                <div class="handle">@ninowfh08</div>
             </div>
 
             <ul class="nav-links">
                 <li><a href="#home" class="nav-item active"><i class="fa-solid fa-house"></i> Home</a></li>
                 <li><a href="#projects" class="nav-item"><i class="fa-solid fa-folder-open"></i> Projects</a></li>
+                <li><a href="#templates" class="nav-item"><i class="fa-solid fa-table"></i> Templates & UI</a></li>
                 <li><a href="#about" class="nav-item"><i class="fa-solid fa-user"></i> About</a></li>
                 <li><a href="#credentials" class="nav-item"><i class="fa-solid fa-award"></i> Credentials</a></li>
                 <li><a href="#services" class="nav-item"><i class="fa-solid fa-gears"></i> Services</a></li>
                 <li><a href="#contact" class="nav-item"><i class="fa-solid fa-envelope"></i> Contact</a></li>
             </ul>
         </div>
-        <div class="handle" style="font-size: 0.75rem; text-align: center;">© 2026 All rights reserved.</div>
+        <div class="handle" style="font-size: 0.75rem; text-align: center;">© 2026 Niño Dermie Cagas</div>
     </aside>
 
     <!-- Main Dashboard -->
@@ -493,14 +508,14 @@
             <div class="mobile-profile-row">
                 <div class="mobile-profile-info">
                     <div class="avatar-container" style="margin-bottom: 0;">
-                        <img src="assets/profile.jpg" alt="Profile" class="avatar" style="width: 48px; height: 48px;">
+                        <img src="assets/profile.jpg" alt="Niño Dermie Cagas" class="avatar" style="width: 48px; height: 48px;" onerror="this.src='https://api.iconify.design/lucide:user.svg?color=%2394a3b8'">
                         <div class="status-dot" style="width: 10px; height: 10px; bottom: 2px; right: 2px;" title="Available for work"></div>
                     </div>
                     <div>
-                        <div class="profile-name" style="justify-content: flex-start; font-size: 1rem;">
-                            Your Name <i class="fa-solid fa-circle-check verified-badge"></i>
+                        <div class="profile-name" style="justify-content: flex-start; font-size: 0.95rem;">
+                            Niño Dermie Cagas <i class="fa-solid fa-circle-check verified-badge"></i>
                         </div>
-                        <div class="handle" style="text-align: left; font-size: 0.8rem;">@yourusername</div>
+                        <div class="handle" style="text-align: left; font-size: 0.78rem;">@ninowfh08</div>
                     </div>
                 </div>
                 <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle Menu">
@@ -511,6 +526,7 @@
             <ul class="mobile-nav-dropdown" id="mobileNav">
                 <li><a href="#home"><i class="fa-solid fa-house"></i> Home</a></li>
                 <li><a href="#projects"><i class="fa-solid fa-folder-open"></i> Projects</a></li>
+                <li><a href="#templates"><i class="fa-solid fa-table"></i> Templates & UI</a></li>
                 <li><a href="#about"><i class="fa-solid fa-user"></i> About</a></li>
                 <li><a href="#credentials"><i class="fa-solid fa-award"></i> Credentials</a></li>
                 <li><a href="#services"><i class="fa-solid fa-gears"></i> Services</a></li>
@@ -521,10 +537,10 @@
         <!-- Home / Hero Section -->
         <div id="home" class="hero-banner" data-aos="fade-down" data-aos-duration="800">
             <div class="hero-title">
-                <h1>Build it once. Run it forever.</h1>
-                <p>Designing streamlined systems, automated web workflows, and high-performance applications that eliminate manual overhead.</p>
+                <h1>Bridging Surveillance, Systems & Creative Code.</h1>
+                <p>Casino Operations Manager & Full-Stack Scripter architecting proprietary web intelligence suites, real-time advantage play calculators, custom Excel operational templates, and pure CSS/HTML design artistry.</p>
             </div>
-            <a href="mailto:your.email@example.com" class="cta-btn">
+            <a href="mailto:usndscagas@gmail.com" class="cta-btn">
                 <span>Get in touch</span>
                 <i class="fa-solid fa-arrow-right-long"></i>
             </a>
@@ -532,12 +548,12 @@
 
         <!-- Daily Drivers Ticker -->
         <div id="tools" class="tools-ticker" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-            <span>Daily Drivers</span>
-            <div class="tool-badge"><i class="fa-brands fa-square-js" style="color: #f7df1e;"></i> JavaScript</div>
-            <div class="tool-badge"><i class="fa-brands fa-python" style="color: #3870a1;"></i> Python</div>
-            <div class="tool-badge"><i class="fa-brands fa-github"></i> GitHub</div>
-            <div class="tool-badge"><i class="fa-solid fa-bolt" style="color: #f59e0b;"></i> Webhooks & Automation</div>
-            <div class="tool-badge"><i class="fa-solid fa-database" style="color: #38bdf8;"></i> Database & APIs</div>
+            <span>Tech Stack</span>
+            <div class="tool-badge"><i class="fa-brands fa-square-js" style="color: #f7df1e;"></i> JavaScript ES6</div>
+            <div class="tool-badge"><i class="fa-solid fa-code" style="color: #e34f26;"></i> HTML5 / CSS3 Art</div>
+            <div class="tool-badge"><i class="fa-solid fa-database" style="color: #38bdf8;"></i> MS Access & VBA</div>
+            <div class="tool-badge"><i class="fa-solid fa-table" style="color: #22c55e;"></i> Advanced Excel Modeling</div>
+            <div class="tool-badge"><i class="fa-solid fa-chart-line" style="color: #a855f7;"></i> Canvas API Rendering</div>
         </div>
 
         <!-- Bento Grid Layout -->
@@ -546,51 +562,89 @@
             <!-- Projects Card -->
             <div id="projects" class="bento-card card-large" data-aos="fade-up" data-aos-delay="200">
                 <div class="card-header">
-                    <div class="card-title"><i class="fa-solid fa-laptop-code" style="color: #6366f1;"></i> FEATURED PROJECTS</div>
-                    <span style="font-size: 0.8rem; color: #38bdf8; font-weight: 600;">Click to View</span>
+                    <div class="card-title"><i class="fa-solid fa-laptop-code" style="color: #6366f1;"></i> FEATURED PROJECTS & SYSTEMS</div>
+                    <span style="font-size: 0.8rem; color: #38bdf8; font-weight: 600;">Production Ready</span>
                 </div>
-                <div class="card-desc">Production-ready single-file web apps and automated reporting systems.</div>
+                <div class="card-desc">Bespoke web-based intelligence tools and 6-year property-wide database backbones.</div>
                 
-                <!-- Clickable Project 1 -->
-                <a href="https://github.com" target="_blank" class="project-link">
+                <!-- Project 1: D' Cagas SIRS Pro -->
+                <a href="https://github.com/ninowfh08" target="_blank" class="project-link">
                     <div class="project-preview">
                         <div>
-                            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem;">Surveillance & Incident Reporting System (SIRS)</h4>
-                            <p style="font-size: 0.85rem; color: var(--text-muted);">Real-time tracking interface built with HTML5, CSS3, and JavaScript.</p>
+                            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem;">D' Cagas - Surveillance Intelligence & Reconnaissance System (SIRS Pro)</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Web-based surveillance intelligence suite featuring real-time AP radar, VIP liability tracking, and Canvas-rendered derived roads.</p>
                         </div>
                         <i class="fa-solid fa-arrow-up-right-from-square" style="color: #38bdf8;"></i>
                     </div>
                 </a>
 
-                <!-- Clickable Project 2 -->
-                <a href="https://github.com" target="_blank" class="project-link">
+                <!-- Project 2: SIRS Database -->
+                <a href="https://github.com/ninowfh08" target="_blank" class="project-link">
                     <div class="project-preview">
                         <div>
-                            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem;">Web-based Time & Attendance Tracker</h4>
-                            <p style="font-size: 0.85rem; color: var(--text-muted);">Shift logging, break calculation, and automated report generation.</p>
+                            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem;">Surveillance Incident Reporting System (SIRS)</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Foundational 6-year operational MS Access/VBA database engine for incident archiving and executive reporting.</p>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square" style="color: #38bdf8;"></i>
+                    </div>
+                </a>
+
+                <!-- Project 3: Shift Attendance Tracker -->
+                <a href="https://github.com/ninowfh08" target="_blank" class="project-link">
+                    <div class="project-preview">
+                        <div>
+                            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem;">Web-Based Time & Attendance Tracker</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Lightweight utility for real-time shift duty hours, break logs, and attendance reporting.</p>
                         </div>
                         <i class="fa-solid fa-arrow-up-right-from-square" style="color: #38bdf8;"></i>
                     </div>
                 </a>
             </div>
 
+            <!-- Templates & UI Emblem Card -->
+            <div id="templates" class="bento-card card-large" data-aos="fade-up" data-aos-delay="250">
+                <div class="card-header">
+                    <div class="card-title"><i class="fa-solid fa-table-cells" style="color: #22c55e;"></i> EXCEL TEMPLATES & CSS ARTWORK</div>
+                    <span style="font-size: 0.8rem; color: #a855f7; font-weight: 600;">Operational & Creative</span>
+                </div>
+                <div class="card-desc">Specialized gaming audit templates, shift management rosters, and custom pure CSS/HTML emblems.</div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.1rem;">
+                        <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; color: #38bdf8;"><i class="fa-solid fa-file-excel"></i> Casino Game & Roster Templates</h4>
+                        <p style="font-size: 0.82rem; color: var(--text-muted);">Advanced Excel operational templates for Asian card games (Niu Niu, Power 5, Non-Commission Baccarat with insurance models) and automated shift roster layouts.</p>
+                    </div>
+                    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.1rem;">
+                        <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; color: #f59e0b;"><i class="fa-solid fa-paintbrush"></i> Custom HTML/CSS Emblem</h4>
+                        <p style="font-size: 0.82rem; color: var(--text-muted);">Hand-crafted vector emblems and visual badges engineered purely with semantic HTML and advanced CSS styling and animations.</p>
+                    </div>
+                </div>
+
+                <div class="emblem-showcase">
+                    <div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.4rem;">Featured Design Highlight</div>
+                        <div style="font-weight: 700; font-size: 1rem; color: var(--text-main);">D' Cagas Signature Emblem (HTML5 / CSS3)</div>
+                    </div>
+                </div>
+            </div>
+
             <!-- About Card -->
             <div id="about" class="bento-card" data-aos="fade-up" data-aos-delay="300">
                 <div class="card-title"><i class="fa-solid fa-user-gear" style="color: #a855f7;"></i> ABOUT</div>
-                <div class="card-desc">Operations & Technical Integration Specialist.</div>
+                <div class="card-desc">Casino Operations & Technical Specialist.</div>
                 
                 <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem;">
-                    Specialized in building lightweight, high-performance web applications and automated workflows that save time and reduce errors.
+                    12+ years managing casino surveillance and resort operations combined with an advanced Computer Science/IT background. Specialized in eliminating manual overhead through custom software development.
                 </p>
 
                 <div class="stat-grid">
                     <div class="stat-box">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Uptime Logic</div>
+                        <div class="stat-number">12+</div>
+                        <div class="stat-label">Years Experience</div>
                     </div>
                     <div class="stat-box">
-                        <div class="stat-number">30+</div>
-                        <div class="stat-label">Workflows</div>
+                        <div class="stat-number">6 Yrs</div>
+                        <div class="stat-label">SIRS Uptime</div>
                     </div>
                 </div>
             </div>
@@ -598,37 +652,36 @@
             <!-- Credentials Card -->
             <div id="credentials" class="bento-card" data-aos="fade-up" data-aos-delay="400">
                 <div class="card-title"><i class="fa-solid fa-award" style="color: #f59e0b;"></i> CREDENTIALS</div>
-                <div class="card-desc">Verified technical expertise and operational mastery.</div>
-                <ul style="font-size: 0.85rem; color: var(--text-muted); padding-left: 1.2rem; line-height: 2;">
-                    <li>Operations & Systems Specialist</li>
-                    <li>Frontend Application Architecture</li>
-                    <li>Workflow Automation & Webhooks</li>
-                    <li>Database & Excel Scripting</li>
+                <div class="card-desc">Domain mastery and technical education.</div>
+                <ul style="font-size: 0.85rem; color: var(--text-muted); padding-left: 1.2rem; line-height: 1.8;">
+                    <li>BS Computer Science & 27 Master's Units (AMA University)</li>
+                    <li>Surveillance Operations Management (Palace Hotel, IPI, RWM)</li>
+                    <li>Advantage Play & Risk Modeling (Dragon 7, Panda 8)</li>
+                    <li>SOP Development & Compliance Architecture</li>
                 </ul>
             </div>
 
             <!-- Services Card -->
             <div id="services" class="bento-card card-large" data-aos="fade-up" data-aos-delay="500">
-                <div class="card-title"><i class="fa-solid fa-rocket" style="color: #38bdf8;"></i> SERVICES</div>
-                <div class="card-desc">Tailored technical solutions for operations and business productivity.</div>
+                <div class="card-title"><i class="fa-solid fa-rocket" style="color: #38bdf8;"></i> CORE CAPABILITIES</div>
+                <div class="card-desc">Bridging physical security infrastructure with digital software systems.</div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 0.9rem;">
-                    <div class="tool-badge" style="justify-content: flex-start; padding: 12px;">01. Custom Single-Page Web Apps</div>
-                    <div class="tool-badge" style="justify-content: flex-start; padding: 12px;">02. Process Automation & Webhooks</div>
-                    <div class="tool-badge" style="justify-content: flex-start; padding: 12px;">03. Incident Reporting Systems</div>
-                    <div class="tool-badge" style="justify-content: flex-start; padding: 12px;">04. Data Processing & Excel Scripts</div>
+                    <div class="tool-badge" style="justify-content: flex-start; padding: 12px;">01. Surveillance & Asset Protection</div>
+                    <div class="tool-badge" style="justify-content: flex-start; padding: 12px;">02. Web-Based Intelligence Suites</div>
+                    <div class="tool-badge" style="justify-content: flex-start; padding: 12px;">03. Database Design (MS Access / VBA)</div>
+                    <div class="tool-badge" style="justify-content: flex-start; padding: 12px;">04. Advanced Excel Templates & CSS UI</div>
                 </div>
             </div>
 
             <!-- Contact Card -->
             <div id="contact" class="bento-card card-large" data-aos="fade-up" data-aos-delay="600">
-                <div class="card-title"><i class="fa-solid fa-comments" style="color: #22c55e;"></i> LET'S CONNECT</div>
-                <div class="card-desc">Reach out directly via email or social platforms for collaboration.</div>
+                <div class="card-title"><i class="fa-solid fa-comments" style="color: #22c55e;"></i> GET IN TOUCH</div>
+                <div class="card-desc">Reach out for professional inquiries or technical collaborations.</div>
                 
                 <div class="contact-box">
-                    <a href="mailto:your.email@example.com" class="social-btn" title="Email"><i class="fa-solid fa-envelope"></i></a>
-                    <a href="https://linkedin.com" target="_blank" class="social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="https://github.com" target="_blank" class="social-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://facebook.com" target="_blank" class="social-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="mailto:usndscagas@gmail.com" class="social-btn" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="https://linkedin.com/in/niño-dermie-c08" target="_blank" class="social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://github.com/ninowfh08" target="_blank" class="social-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
                 </div>
             </div>
 
