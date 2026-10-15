@@ -151,7 +151,7 @@
             transform: translateX(4px);
         }
 
-        /* Mobile Profile Bar & Nav (Hidden on Desktop) */
+        /* Mobile Profile Bar & Nav */
         .mobile-header-container {
             display: none;
         }
@@ -159,6 +159,7 @@
         /* Main Dashboard Content */
         main {
             margin-left: 280px;
+            width: calc(100% - 280px);
             flex-grow: 1;
             padding: 3rem;
             max-width: 1400px;
@@ -182,6 +183,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 0.5rem;
+            word-break: break-word;
         }
 
         .hero-title p {
@@ -223,7 +225,7 @@
             gap: 1rem;
             margin-bottom: 2rem;
             backdrop-filter: blur(10px);
-            overflow-x: auto;
+            flex-wrap: wrap;
             scroll-margin-top: 3rem;
         }
 
@@ -308,12 +310,13 @@
             margin-bottom: 1.25rem;
         }
 
-        /* Clickable Project Item */
+        /* Clickable Project Item / Glimpse Trigger */
         .project-link {
             text-decoration: none;
             color: inherit;
             display: block;
             margin-bottom: 0.85rem;
+            cursor: pointer;
         }
 
         .project-preview {
@@ -405,7 +408,7 @@
         /* Responsive */
         @media(max-width: 1024px) {
             aside { display: none; }
-            main { margin-left: 0; padding: 1.5rem; }
+            main { margin-left: 0; width: 100%; padding: 1.5rem; }
             .bento-grid { grid-template-columns: 1fr; }
             .card-large { grid-column: span 1; }
             .hero-banner { flex-direction: column; gap: 1.5rem; }
@@ -563,60 +566,64 @@
             <div id="projects" class="bento-card card-large" data-aos="fade-up" data-aos-delay="200">
                 <div class="card-header">
                     <div class="card-title"><i class="fa-solid fa-laptop-code" style="color: #6366f1;"></i> FEATURED PROJECTS & SYSTEMS</div>
-                    <span style="font-size: 0.8rem; color: #38bdf8; font-weight: 600;">Production Ready</span>
+                    <span style="font-size: 0.8rem; color: #38bdf8; font-weight: 600;">Click for Glimpse Preview</span>
                 </div>
                 <div class="card-desc">Bespoke web-based intelligence tools and 6-year property-wide database backbones.</div>
                 
                 <!-- Project 1: D' Cagas SIRS Pro -->
-                <a href="https://github.com/ninowfh08" target="_blank" class="project-link">
+                <div class="project-link preview-trigger" data-project="sirs-pro">
                     <div class="project-preview">
                         <div>
                             <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem;">D' Cagas - Surveillance Intelligence & Reconnaissance System (SIRS Pro)</h4>
                             <p style="font-size: 0.85rem; color: var(--text-muted);">Web-based surveillance intelligence suite featuring real-time AP radar, VIP liability tracking, and Canvas-rendered derived roads.</p>
                         </div>
-                        <i class="fa-solid fa-arrow-up-right-from-square" style="color: #38bdf8;"></i>
+                        <i class="fa-solid fa-eye" style="color: #38bdf8;"></i>
                     </div>
-                </a>
+                </div>
 
                 <!-- Project 2: SIRS Database -->
-                <a href="https://github.com/ninowfh08" target="_blank" class="project-link">
+                <div class="project-link preview-trigger" data-project="sirs-db">
                     <div class="project-preview">
                         <div>
                             <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem;">Surveillance Incident Reporting System (SIRS)</h4>
                             <p style="font-size: 0.85rem; color: var(--text-muted);">Foundational 6-year operational MS Access/VBA database engine for incident archiving and executive reporting.</p>
                         </div>
-                        <i class="fa-solid fa-arrow-up-right-from-square" style="color: #38bdf8;"></i>
+                        <i class="fa-solid fa-eye" style="color: #38bdf8;"></i>
                     </div>
-                </a>
+                </div>
 
                 <!-- Project 3: Shift Attendance Tracker -->
-                <a href="https://github.com/ninowfh08" target="_blank" class="project-link">
+                <div class="project-link preview-trigger" data-project="attendance-tracker">
                     <div class="project-preview">
                         <div>
                             <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem;">Web-Based Time & Attendance Tracker</h4>
                             <p style="font-size: 0.85rem; color: var(--text-muted);">Lightweight utility for real-time shift duty hours, break logs, and attendance reporting.</p>
                         </div>
-                        <i class="fa-solid fa-arrow-up-right-from-square" style="color: #38bdf8;"></i>
+                        <i class="fa-solid fa-eye" style="color: #38bdf8;"></i>
                     </div>
-                </a>
+                </div>
             </div>
 
             <!-- Templates & UI Emblem Card -->
             <div id="templates" class="bento-card card-large" data-aos="fade-up" data-aos-delay="250">
                 <div class="card-header">
                     <div class="card-title"><i class="fa-solid fa-table-cells" style="color: #22c55e;"></i> EXCEL TEMPLATES & CSS ARTWORK</div>
-                    <span style="font-size: 0.8rem; color: #a855f7; font-weight: 600;">Operational & Creative</span>
+                    <span style="font-size: 0.8rem; color: #a855f7; font-weight: 600;">Click for Glimpse Preview</span>
                 </div>
                 <div class="card-desc">Specialized gaming audit templates, shift management rosters, and custom pure CSS/HTML emblems.</div>
 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
-                    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.1rem;">
-                        <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; color: #38bdf8;"><i class="fa-solid fa-file-excel"></i> Casino Game & Roster Templates</h4>
-                        <p style="font-size: 0.82rem; color: var(--text-muted);">Advanced Excel operational templates for Asian card games (Niu Niu, Power 5, Non-Commission Baccarat with insurance models) and automated shift roster layouts.</p>
+                    <div class="project-link preview-trigger" data-project="excel-templates" style="margin-bottom: 0;">
+                        <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.1rem; height: 100%; transition: all 0.25s ease;">
+                            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; color: #38bdf8;"><i class="fa-solid fa-file-excel"></i> Casino Game & Roster Templates</h4>
+                            <p style="font-size: 0.82rem; color: var(--text-muted);">Advanced Excel operational templates for Asian card games and automated shift roster layouts.</p>
+                        </div>
                     </div>
-                    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.1rem;">
-                        <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; color: #f59e0b;"><i class="fa-solid fa-paintbrush"></i> Custom HTML/CSS Emblem</h4>
-                        <p style="font-size: 0.82rem; color: var(--text-muted);">Hand-crafted vector emblems and visual badges engineered purely with semantic HTML and advanced CSS styling and animations.</p>
+                    <div class="project-link preview-trigger" data-project="css-emblem" style="margin-bottom: 0;">
+                        <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.1rem; height: 100%; transition: all 0.25s ease;">
+                            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; color: #f59e0b;"><i class="fa-solid fa-paintbrush"></i> Custom HTML/CSS Emblem</h4>
+                            <p style="font-size: 0.82rem; color: var(--text-muted);">Hand-crafted vector emblems and visual badges engineered purely with semantic HTML and CSS styling.</p>
+                        </div>
                     </div>
                 </div>
 
@@ -688,6 +695,22 @@
         </div>
     </main>
 
+    <!-- Project Preview Modal Overlay -->
+    <div id="projectModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); z-index: 1000; align-items: center; justify-content: center; padding: 1.5rem;">
+        <div style="background: #1e293b; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 20px; width: 100%; max-width: 1100px; max-height: 92vh; overflow-y: auto; padding: 2.25rem; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);">
+            <button id="closeModal" style="position: absolute; top: 1.25rem; right: 1.25rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #f8fafc; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem;"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div id="modalContent">
+                <!-- Dynamically populated via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Image Lightbox Overlay -->
+    <div id="imageZoomModal" onclick="this.style.display='none'" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.92); z-index: 2000; align-items: center; justify-content: center; cursor: zoom-out; padding: 1rem;">
+        <img id="zoomedImg" src="" style="max-width: 95vw; max-height: 95vh; object-fit: contain; border-radius: 10px; box-shadow: 0 0 30px rgba(0,0,0,0.8);">
+    </div>
+
     <!-- AOS Script & Interactive JavaScript -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -715,7 +738,6 @@
                 }
             });
 
-            // Close menu when clicking a link
             mobileNav.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     mobileNav.classList.remove('open');
@@ -725,6 +747,190 @@
                 });
             });
         }
+
+        // Global Helper for PDF Switching
+        function switchPdf(url, btnElement) {
+            const iframe = document.getElementById('templateIframe');
+            if (iframe) {
+                iframe.src = url + '#view=FitH&toolbar=0&navpanes=0&scrollbar=0';
+            }
+            document.querySelectorAll('.doc-btn').forEach(b => {
+                b.style.background = 'rgba(255,255,255,0.05)';
+            });
+            if (btnElement) {
+                btnElement.style.background = '#6366f1';
+            }
+        }
+
+        // Project Data for Interactive Glimpse Previews
+        const projectData = {
+            'sirs-pro': {
+                title: "D' Cagas - Surveillance Intelligence & Reconnaissance System (SIRS Pro v24)",
+                category: "Web Intelligence Suite",
+                desc: "A bespoke web-based surveillance intelligence and table protection platform.",
+                image: "images/sirs_pro/photo_2026-10-15_22-25-38.jpg",
+                images: [
+                    "images/sirs_pro/photo_2026-10-15_22-25-38.jpg",
+                    "images/sirs_pro/photo_2026-10-15_22-25-56.jpg",
+                    "images/sirs_pro/photo_2026-10-15_22-26-01.jpg",
+                    "images/sirs_pro/photo_2026-10-15_22-26-04.jpg",
+                    "images/sirs_pro/photo_2026-10-15_22-26-08.jpg",
+                    "images/sirs_pro/photo_2026-10-15_22-26-11.jpg"
+                ],
+                pdfUrl: "images/sirs_pro/sirs-report.pdf",
+                glimpse: "Engineered automated 8-deck card depletion tracking live tray counts to compute True Counts and risk thresholds for Dragon 7, Panda 8, and side bets. Features 7-seat VIP dock liability tracking, Canvas-rendered Big Road & Bead Plate prediction matrices, and a zero-mouse numpad hotkey matrix.",
+                demoUrl: "https://ninowfh08.github.io/sirs-pro-demo/"
+            },
+            'sirs-db': {
+                title: "Surveillance Incident Reporting System (SIRS)",
+                category: "Property-Wide MS Access Database & User Manual",
+                desc: "The foundational 6-year operational backbone running continuously for security archiving, complete with system architecture documentation.",
+                pdfUrl: "images/sirs_db/User Manual - SIRS-Beta 2.0.pdf",
+                glimpse: "Securely logs, archives, and tracks security and surveillance incidents property-wide with automated data export pipelines feeding structured shift records straight into executive management reports and loss audits. Review the embedded user manual for complete system layout diagrams and operational workflows."
+            },
+            'attendance-tracker': {
+                title: "Web-Based Time & Attendance Tracker",
+                category: "Workforce Management Utility",
+                desc: "A lightweight web application built to streamline shift logging and break tracking.",
+                images: [
+                    "images/attendance-tracker/Screenshot 2026-10-16 004651.png",
+                    "images/attendance-tracker/Screenshot 2026-10-16 004726.png",
+                    "images/attendance-tracker/Screenshot 2026-10-16 004758.png",
+                    "images/attendance-tracker/Screenshot 2026-10-16 004853.png",
+                    "images/attendance-tracker/Screenshot 2026-10-16 004934.png"
+                ],
+                glimpse: "Tracks real-time duty hours, break logs, and attendance records for surveillance personnel, featuring instant print layouts to eliminate manual paper timesheets."
+            },
+            'excel-templates': {
+                title: "Casino Gaming Audit & Operational Templates",
+                category: "Advanced Excel & VBA Suite",
+                desc: "A comprehensive library of specialized casino gaming audit spreadsheets, side bet liability calculators, and head-to-head evaluation models.",
+                glimpse: "Includes mathematical evaluation matrices for Asian card games (Niu Niu, Power 5), Commission & Non-Commission Baccarat models with multi-stage insurance tracking, Dragon 7 & Panda 8 advantage play spreadsheets, and Blackjack H2H audit rosters.",
+                pdfList: [
+                    { name: "Blackjack H2H Template", url: "images/excel_templates/bj_h2h.pdf" },
+                    { name: "D7-P8-MB w INS H2H (MULTIPLE)", url: "images/excel_templates/d7_p8_mb_multiple.pdf" },
+                    { name: "D7-P8-MB w INS H2H (SINGLE)", url: "images/excel_templates/d7_p8_mb_single.pdf" },
+                    { name: "D7-P8-NCB w INS H2H (MULTIPLE)", url: "images/excel_templates/d7_p8_ncb_multiple.pdf" },
+                    { name: "D7-P8-NCB w INS H2H (SINGLE)", url: "images/excel_templates/d7_p8_ncb_single.pdf" },
+                    { name: "D7-P8-BST_MB w INS H2H (MULTIPLE)", url: "images/excel_templates/d7_p8_bst_mb_multiple.pdf" },
+                    { name: "D7-P8-BST_MB w INS H2H (SINGLE)", url: "images/excel_templates/d7_p8_bst_mb_single.pdf" },
+                    { name: "D7-P8-BST_NCB w INS H2H (SINGLE)", url: "images/excel_templates/d7_p8_bst_ncb_single.pdf" },
+                    { name: "MB w INS H2H (MULTIPLE)", url: "images/excel_templates/mb_multiple.pdf" },
+                    { name: "MB w INS H2H (SINGLE)", url: "images/excel_templates/mb_single.pdf" },
+                    { name: "NCB w INS H2H (MULTIPLE)", url: "images/excel_templates/ncb_multiple.pdf" },
+                    { name: "NCB w INS H2H (SINGLE)", url: "images/excel_templates/ncb_single.pdf" },
+                    { name: "NIU NIU H2H TEMPLATE", url: "images/excel_templates/niu_niu_h2h.pdf" },
+                    { name: "NIU NIU POWER 5 TEMPLATE", url: "images/excel_templates/niu_niu_power5.pdf" }
+                ]
+            },
+            'css-emblem': {
+                title: "Custom HTML/CSS Emblem",
+                category: "Pure CSS Design Artistry",
+                desc: "Hand-crafted vector graphic badge engineered purely with semantic HTML and CSS styling.",
+                image: "images/css_emblem_preview.png",
+                glimpse: "Showcases advanced front-end styling, precise layouts, and custom keyframe animations built entirely without heavy image assets."
+            }
+        };
+
+        // Open Glimpse Modal on Click
+        document.querySelectorAll('.preview-trigger').forEach(card => {
+            card.addEventListener('click', (e) => {
+                e.preventDefault();
+                const projectId = card.getAttribute('data-project');
+                const data = projectData[projectId];
+                
+                if (data) {
+                    let galleryHtml = '';
+                    if (data.images && data.images.length > 0) {
+                        const thumbnails = data.images.map(img => 
+                            '<img src="' + img + '" onclick="document.getElementById(\'mainModalImg\').src=\'' + img + '\'" style="width: 90px; height: 62px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 1px solid rgba(255,255,255,0.15); transition: all 0.2s ease;" onmouseover="this.style.opacity=\'0.8\'" onmouseout="this.style.opacity=\'1\'">'
+                        ).join('');
+
+                        galleryHtml = 
+                            '<div style="margin-bottom: 1.25rem;">' +
+                                '<div style="width: 100%; height: 500px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: #0f172a; margin-bottom: 0.75rem; cursor: zoom-in; position: relative;" onclick="document.getElementById(\'zoomedImg\').src=document.getElementById(\'mainModalImg\').src; document.getElementById(\'imageZoomModal\').style.display=\'flex\';">' +
+                                    '<img id="mainModalImg" src="' + data.images[0] + '" alt="' + data.title + ' Preview" style="width: 100%; height: 100%; object-fit: contain; background: #0f172a;">' +
+                                    '<div style="position: absolute; bottom: 12px; right: 12px; background: rgba(15, 23, 42, 0.88); color: #38bdf8; padding: 8px 14px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.15); pointer-events: none; display: flex; align-items: center; gap: 6px;">' +
+                                        '<i class="fa-solid fa-magnifying-glass-plus"></i> Click for Fullscreen View' +
+                                    '</div>' +
+                                '</div>' +
+                                '<div style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 6px;">' +
+                                    thumbnails +
+                                '</div>' +
+                            '</div>';
+                    } else if (data.image) {
+                        galleryHtml = 
+                            '<div style="width: 100%; height: 450px; border-radius: 12px; overflow: hidden; margin-bottom: 1.25rem; border: 1px solid rgba(255,255,255,0.1); background: #0f172a; cursor: zoom-in; position: relative;" onclick="document.getElementById(\'zoomedImg\').src=\'' + data.image + '\'; document.getElementById(\'imageZoomModal\').style.display=\'flex\';">' +
+                                '<img src="' + data.image + '" alt="' + data.title + ' Preview" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.parentElement.style.display=\'none\'">' +
+                                '<div style="position: absolute; bottom: 12px; right: 12px; background: rgba(15, 23, 42, 0.88); color: #38bdf8; padding: 8px 14px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.15); pointer-events: none; display: flex; align-items: center; gap: 6px;">' +
+                                    '<i class="fa-solid fa-magnifying-glass-plus"></i> Click for Fullscreen View' +
+                                '</div>' +
+                            '</div>';
+                    }
+
+                    let pdfListHtml = '';
+                    if (data.pdfList && data.pdfList.length > 0) {
+                        const buttons = data.pdfList.map((doc, idx) => 
+                            '<button onclick="switchPdf(\'' + doc.url + '\', this)" class="doc-btn" style="background: ' + (idx === 0 ? '#6366f1' : 'rgba(255,255,255,0.05)') + '; border: 1px solid rgba(255,255,255,0.12); color: #f8fafc; padding: 0.35rem 0.65rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; line-height: 1.2; transition: all 0.2s ease;">' +
+                                '<i class="fa-solid fa-file-excel" style="color: #22c55e;"></i> ' + doc.name +
+                            '</button>'
+                        ).join('');
+
+                        pdfListHtml = 
+                            '<div style="margin-bottom: 1.5rem;">' +
+                                '<div style="font-size: 0.85rem; font-weight: 700; color: #38bdf8; margin-bottom: 0.5rem;">' +
+                                    '<i class="fa-solid fa-list-check"></i> Select Template Document to View:' +
+                                '</div>' +
+                                '<div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1rem; max-height: 100px; overflow-y: auto; padding: 4px; align-items: center;">' +
+                                    buttons +
+                                '</div>' +
+                                '<div style="width: 100%; height: 750px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: #0f172a;">' +
+                                    '<iframe id="templateIframe" src="' + data.pdfList[0].url + '#view=FitH&toolbar=0&navpanes=0&scrollbar=0" style="width: 100%; height: 100%; border: none;"></iframe>' +
+                                '</div>' +
+                            '</div>';
+                    }
+
+                    let pdfViewerSection = '';
+                    if (data.pdfUrl) {
+                        const buttonLabel = projectId === 'sirs-db' ? 'View System User Manual & Photos (PDF)' : 'View Sample Report (Embedded)';
+                        pdfViewerSection = 
+                            '<div style="margin-top: 1rem;">' +
+                                '<button onclick="let v = document.getElementById(\'embeddedPdfViewer\'); v.style.display = v.style.display === \'none\' ? \'block\' : \'none\';" style="background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; padding: 0.65rem 1.25rem; border-radius: 99px; text-decoration: none; font-weight: 600; font-size: 0.85rem; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">' +
+                                    '<i class="fa-solid fa-file-pdf"></i> ' + buttonLabel +
+                                '</button>' +
+                                '<div id="embeddedPdfViewer" style="display: none; margin-top: 1rem; width: 100%; height: 800px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: #0f172a;">' +
+                                    '<iframe src="' + data.pdfUrl + '#view=FitH&toolbar=0&navpanes=0&scrollbar=0" style="width: 100%; height: 100%; border: none;"></iframe>' +
+                                '</div>' +
+                            '</div>';
+                    }
+
+                    document.getElementById('modalContent').innerHTML = 
+                        '<div style="font-size: 0.75rem; font-weight: 700; color: #6366f1; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">' + data.category + '</div>' +
+                        '<h3 style="font-size: 1.5rem; font-weight: 800; color: #f8fafc; margin-bottom: 0.75rem;">' + data.title + '</h3>' +
+                        '<p style="color: #94a3b8; font-size: 1rem; margin-bottom: 1.25rem; line-height: 1.6;">' + data.desc + '</p>' +
+                        galleryHtml +
+                        pdfListHtml +
+                        '<div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 1.25rem; margin-bottom: 1.5rem;">' +
+                            '<div style="font-size: 0.85rem; font-weight: 700; color: #38bdf8; margin-bottom: 0.4rem;"><i class="fa-solid fa-eye"></i> Project Glimpse & Capabilities</div>' +
+                            '<p style="font-size: 0.95rem; color: #f8fafc; line-height: 1.6;">' + data.glimpse + '</p>' +
+                        '</div>' +
+                        pdfViewerSection;
+
+                    document.getElementById('projectModal').style.display = 'flex';
+                }
+            });
+        });
+
+        // Close Modal Logic
+        document.getElementById('closeModal').addEventListener('click', () => {
+            document.getElementById('projectModal').style.display = 'none';
+        });
+
+        document.getElementById('projectModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('projectModal')) {
+                document.getElementById('projectModal').style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html>
