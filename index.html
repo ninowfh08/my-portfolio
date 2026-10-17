@@ -586,7 +586,7 @@
                     <div class="card-title"><i class="fa-solid fa-laptop-code" style="color: #6366f1;"></i> FEATURED PROJECTS & SYSTEMS</div>
                     <span style="font-size: 0.8rem; color: #38bdf8; font-weight: 600;">Click for Glimpse Preview</span>
                 </div>
-                <div class="card-desc">Bespoke web-based intelligence tools and 6-year property-wide database backbones.</div>
+                <div class="card-desc">Bespoke web-based intelligence tools, shift scheduling utilities, and 6-year property-wide database backbones.</div>
                 
                 <!-- Project 1: D' Cagas SIRS Pro -->
                 <div class="project-link preview-trigger" data-project="sirs-pro">
@@ -616,6 +616,17 @@
                         <div>
                             <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem;">Web-Based Time & Attendance Tracker</h4>
                             <p style="font-size: 0.85rem; color: var(--text-muted);">Lightweight utility for real-time shift duty hours, break logs, and attendance reporting.</p>
+                        </div>
+                        <i class="fa-solid fa-eye" style="color: #38bdf8;"></i>
+                    </div>
+                </div>
+
+                <!-- Project 4: Surveillance Shift Roster Template -->
+                <div class="project-link preview-trigger" data-project="roster-template">
+                    <div class="project-preview">
+                        <div>
+                            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem;">Surveillance Shift Roster & Schedule Template</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Comprehensive shift planning model for managing personnel rotations, duty coverage, and leave tracking.</p>
                         </div>
                         <i class="fa-solid fa-eye" style="color: #38bdf8;"></i>
                     </div>
@@ -949,12 +960,20 @@
                 ],
                 glimpse: "Tracks real-time duty hours, break logs, and attendance records for surveillance personnel, featuring instant print layouts to eliminate manual paper timesheets."
             },
+            'roster-template': {
+                title: "Surveillance Shift Roster & Schedule Template",
+                category: "Workforce & Operations Management",
+                desc: "A operational scheduling utility designed for surveillance shift rotations, duty hours, and coverage management.",
+                pdfUrl: "images/roster-template/rostertemp.pdf",
+                glimpse: "Engineered to eliminate schedule overlaps and streamline personnel deployment across multi-shift surveillance operations with automated hour totals and shift logs."
+            },
             'excel-templates': {
                 title: "Casino Gaming Audit & Operational Templates",
                 category: "Advanced Excel & VBA Suite",
                 desc: "A comprehensive library of specialized casino gaming audit spreadsheets, side bet liability calculators, and head-to-head evaluation models.",
                 glimpse: "Includes mathematical evaluation matrices for Asian card games (Niu Niu, Power 5), Commission & Non-Commission Baccarat models with multi-stage insurance tracking, Dragon 7 & Panda 8 advantage play spreadsheets, and Blackjack H2H audit rosters.",
                 pdfList: [
+                    { name: "Shift Roster Template", url: "images/roster-template/rostertemp.pdf" },
                     { name: "Blackjack H2H Template", url: "images/excel_templates/bj_h2h.pdf" },
                     { name: "D7-P8-MB w INS H2H (MULTIPLE)", url: "images/excel_templates/d7_p8_mb_multiple.pdf" },
                     { name: "D7-P8-MB w INS H2H (SINGLE)", url: "images/excel_templates/d7_p8_mb_single.pdf" },
@@ -1107,13 +1126,13 @@
 
                     let pdfViewerSection = '';
                     if (data.pdfUrl) {
-                        const buttonLabel = projectId === 'sirs-db' ? 'View System User Manual & Photos (PDF)' : 'View Sample Report (Embedded)';
+                        const buttonLabel = projectId === 'sirs-db' ? 'View System User Manual & Photos (PDF)' : (projectId === 'roster-template' ? 'View Roster Template PDF' : 'View Sample Report (Embedded)');
                         pdfViewerSection = 
                             '<div style="margin-top: 1rem;">' +
                                 '<button onclick="let v = document.getElementById(\'embeddedPdfViewer\'); v.style.display = v.style.display === \'none\' ? \'block\' : \'none\';" style="background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; padding: 0.65rem 1.25rem; border-radius: 99px; text-decoration: none; font-weight: 600; font-size: 0.85rem; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">' +
                                     '<i class="fa-solid fa-file-pdf"></i> ' + buttonLabel +
                                 '</button>' +
-                                '<div id="embeddedPdfViewer" style="display: none; margin-top: 1rem; width: 100%; height: 800px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: #0f172a;">' +
+                                '<div id="embeddedPdfViewer" style="display: ' + (projectId === 'roster-template' ? 'block' : 'none') + '; margin-top: 1rem; width: 100%; height: 800px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: #0f172a;">' +
                                     '<iframe src="' + data.pdfUrl + '#view=FitH&toolbar=0&navpanes=0&scrollbar=0" style="width: 100%; height: 100%; border: none;"></iframe>' +
                                 '</div>' +
                             '</div>';
