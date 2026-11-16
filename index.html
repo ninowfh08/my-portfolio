@@ -616,6 +616,17 @@
                 </div>
                 <div class="card-desc">Bespoke web-based intelligence tools, shift scheduling utilities, KPI performance models, and 6-year property-wide database backbones.</div>
                 
+                <!-- Project 0: AJM Operations Command Center -->
+                <div class="project-link preview-trigger" data-project="ajm-dashboard">
+                    <div class="project-preview">
+                        <div>
+                            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem;">AJM Operations Command Center</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Engineered an executive e-commerce operations dashboard featuring multi-brand KPI benchmarking, zero-to-one launch readiness tracking, merchant underwriting risk logs, and real-time telemetry QA metrics.</p>
+                        </div>
+                        <i class="fa-solid fa-eye" style="color: #38bdf8;"></i>
+                    </div>
+                </div>
+
                 <!-- Project 1: D' Cagas SIRS Pro -->
                 <div class="project-link preview-trigger" data-project="sirs-pro">
                     <div class="project-preview">
@@ -979,6 +990,13 @@
 
         // Project Data for Interactive Glimpse Previews
         const projectData = {
+            'ajm-dashboard': {
+                title: "AJM Operations Command Center",
+                category: "E-Commerce & Operations Intelligence Suite",
+                desc: "An executive-grade, single-file dashboard engineered for multi-brand e-commerce portfolio oversight and COO decision support.",
+                demoUrl: "ajm-operations-dashboard.html",
+                glimpse: "Built as a production-ready operations suite for multi-brand portfolios. Features interactive KPI filtering (fulfillment speed, order accuracy, return rates, Gorgias/AirCall response times), live launch readiness gates with automatic Go/No-Go status calculations, merchant underwriting risk logs, and an interactive QA anomaly tracker persisted via localStorage."
+            },
             'sirs-pro': {
                 title: "D' Cagas - Surveillance Intelligence & Reconnaissance System (SIRS Pro)",
                 category: "Web Intelligence Suite",
@@ -1146,6 +1164,18 @@
                         `;
                     }
 
+                    // Special Action Button for Dashboard Demo Link
+                    let demoButtonHtml = '';
+                    if (data.demoUrl) {
+                        demoButtonHtml = `
+                            <div style="margin-top: 1rem; margin-bottom: 1.25rem;">
+                                <a href="${data.demoUrl}" target="_blank" style="background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); color: #fff; padding: 0.75rem 1.5rem; border-radius: 99px; text-decoration: none; font-weight: 700; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4); transition: all 0.2s ease;">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Launch Live Dashboard Demo
+                                </a>
+                            </div>
+                        `;
+                    }
+
                     let galleryHtml = '';
                     if (data.images && data.images.length > 0) {
                         const thumbnails = data.images.map(img => 
@@ -1215,6 +1245,7 @@
                         '<div style="font-size: 0.75rem; font-weight: 700; color: #6366f1; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">' + data.category + '</div>' +
                         '<h3 style="font-size: 1.5rem; font-weight: 800; color: #f8fafc; margin-bottom: 0.75rem;">' + data.title + '</h3>' +
                         '<p style="color: #94a3b8; font-size: 1rem; margin-bottom: 1.25rem; line-height: 1.6;">' + data.desc + '</p>' +
+                        demoButtonHtml +
                         customContentHtml +
                         galleryHtml +
                         pdfListHtml +
