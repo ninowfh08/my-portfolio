@@ -1,1 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niño Dermie S. Cagas | Operations & Systems Specialist Portfolio</title>
+    
+    <!-- SEO & OpenGraph Meta Tags -->
+    <meta name="description" content="Casino Surveillance & Operations Manager architecting proprietary web intelligence suites, automated data pipelines, and advantage play risk models.">
+    <meta name="author" content="Niño Dermie S. Cagas">
+    
+    <!-- OpenGraph / Social Share Cards -->
+    <meta property="og:title" content="Niño Dermie S. Cagas | Operations & Systems Specialist">
+    <meta property="og:description" content="Explore bespoke web-based intelligence suites, casino surveillance management tools, and advanced operational systems.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ninowfh08.github.io/">
+    <meta property="og:image" content="https://ninowfh08.github.io/assets/profile.jpg">
 
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Niño Dermie S. Cagas | Operations & Systems Specialist">
+    <meta name="twitter:description" content="Casino Surveillance & Operations Manager portfolio and system showcases.">
+    <meta name="twitter:image" content="https://ninowfh08.github.io/assets/profile.jpg">
+
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cinzel:wght@700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* Enable Smooth Scrolling Page-Wide */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg-color: #0f172a;
+            --sidebar-bg: #1e293b;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-glow: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --badge-bg: rgba(255, 255, 255, 0.05);
+            --pill-hover: rgba(99, 102, 241, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Ambient Background Glow */
+        .ambient-glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(0,0,0,0) 70%);
+            top: -100px;
+            right: -100px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Sidebar Navigation */
+        aside {
+            width: 280px;
+            background-color: var(--sidebar-bg);
+            border-right: 1px solid var(--card-border);
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: fixed;
+            height: 100vh;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+        }
+
+        .profile-area {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .avatar-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .avatar {
+            width: 84px;
+            height: 84px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .status-dot {
+            width: 14px;
+            height: 14px;
+            background-color: #22c55e;
+            border: 2px solid var(--sidebar-bg);
+            border-radius: 50%;
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            box-shadow: 0 0 8px #22c55e;
+        }
+
+        .profile-name {
+            font-weight: 700;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .verified-badge {
+            color: #38bdf8;
+            font-size: 0.9rem;
+        }
+
+        .handle {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-top: 0.2rem;
+        }
+
+        .handle a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .handle a:hover {
+            color: #38bdf8;
+            text-decoration: underline;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            flex-grow: 1;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0.75rem 1rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.25s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: var(--badge-bg);
+            color: var(--text-main);
+            border: 1px solid var(--card-border);
+            transform: translateX(4px);
+        }
+
+        /* Mobile Profile Bar & Nav */
+        .mobile-header-container {
+            display: none;
+        }
+
+        /* Main Dashboard Content */
+        main {
+            margin-left: 280px;
+            width: calc(100% - 280px);
+            flex-grow: 1;
+            padding: 3rem;
+            max-width: 1400px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-banner {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            scroll-margin-top: 3rem;
+        }
+
+        .hero-title h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            word-break: break-word;
+        }
+
+        .hero-title p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 650px;
+            line-height: 1.6;
+        }
+
+        .cta-btn {
+            background: var(--accent-glow);
+            color: #fff;
+            padding: 0.85rem 1.75rem;
+            border-radius: 99px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+        }
+
+        /* Tools Ticker */
+        .tools-ticker {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 0.85rem 1.25rem;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            flex-wrap: wrap;
+            scroll-margin-top: 3rem;
+        }
+
+        .tools-ticker span {
+            font-weight: 700;
+            color: #6366f1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+        }
+
+        .tool-badge {
+            background: var(--badge-bg);
+            border: 1px solid var(--card-border);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: normal;
+            word-break: break-word;
+            transition: all 0.2s ease;
+        }
+
+        .tool-badge:hover {
+            background: var(--pill-hover);
+            border-color: #6366f1;
+            transform: translateY(-2px);
+        }
+
+        /* Bento Grid Layout */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .bento-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 1.75rem;
+            backdrop-filter: blur(12px);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.35s ease;
+            position: relative;
+            overflow: hidden;
+            scroll-margin-top: 3rem;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .card-large { grid-column: span 2; }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .card-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.25rem;
+        }
+
+        /* Clickable Project Item / Glimpse Trigger */
+        .project-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            margin-bottom: 0.85rem;
+            cursor: pointer;
+        }
+
+        .project-preview {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            transition: all 0.25s ease;
+        }
+
+        .project-preview:hover {
+            background: rgba(99, 102, 241, 0.15);
+            border-color: #6366f1;
+            transform: scale(1.01);
+        }
+
+        /* Custom Emblem Box Showcase */
+        .emblem-showcase {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0d0002;
+            border: 1px solid rgba(255, 215, 0, 0.25);
+            border-radius: 14px;
+            padding: 1.25rem;
+            margin-top: 1rem;
+            text-align: center;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Stats Counter Box */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .stat-box {
+            background: var(--badge-bg);
+            border: 1px solid var(--card-border);
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #38bdf8;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.2rem;
+        }
+
+        /* Footer / Contact Card */
+        .contact-box {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-btn {
+            background: var(--badge-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .social-btn:hover {
+            background: #6366f1;
+            border-color: #6366f1;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media(max-width: 1024px) {
+            aside { display: none; }
+            main { margin-left: 0; width: 100%; padding: 1.5rem; }
+            .bento-grid { grid-template-columns: 1fr; }
+            .card-large { grid-column: span 1; }
+            .hero-banner { flex-direction: column; gap: 1.5rem; }
+            .mobile-header-container {
+                display: block;
+                background: var(--card-bg);
+                border: 1px solid var(--card-border);
+                padding: 1rem 1.25rem;
+                border-radius: 16px;
+                margin-bottom: 2rem;
+                backdrop-filter: blur(10px);
+            }
+            .mobile-profile-row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .mobile-profile-info {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            }
+            .mobile-menu-toggle {
+                background: var(--badge-bg);
+                border: 1px solid var(--card-border);
+                color: var(--text-main);
+                width: 38px;
+                height: 38px;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+            }
+            .mobile-nav-dropdown {
+                display: none;
+                list-style: none;
+                margin-top: 1rem;
+                padding-top: 1rem;
+                border-top: 1px solid var(--card-border);
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .mobile-nav-dropdown.open {
+                display: flex;
+            }
+            .mobile-nav-dropdown a {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 0.6rem 0.8rem;
+                color: var(--text-muted);
+                text-decoration: none;
+                border-radius: 8px;
+                font-size: 0.9rem;
+            }
+            .mobile-nav-dropdown a:hover {
+                background: var(--badge-bg);
+                color: var(--text-main);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow"></div>
+
+    <!-- Sidebar Navigation (Desktop) -->
+    <aside>
+        <div>
+            <div class="profile-area">
+                <div class="avatar-container">
+                    <img src="assets/profile.jpg" alt="Niño Dermie S. Cagas" class="avatar" onerror="this.src='https://api.iconify.design/lucide:user.svg?color=%2394a3b8'">
+                    <div class="status-dot" title="Available for work"></div>
+                </div>
+                <div class="profile-name">
+                    Niño Dermie Cagas
+                    <i class="fa-solid fa-circle-check verified-badge" title="Verified Professional"></i>
+                </div>
+                <div class="handle">
+                    <a href="https://t.me/neimred_sc" target="_blank" title="Telegram Profile">@neimred_sc</a>
+                </div>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-item active"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="#projects" class="nav-item"><i class="fa-solid fa-folder-open"></i> Projects</a></li>
+                <li><a href="#templates" class="nav-item"><i class="fa-solid fa-table"></i> Templates & UI</a></li>
+                <li><a href="#about" class="nav-item"><i class="fa-solid fa-user"></i> About</a></li>
+                <li><a href="#credentials" class="nav-item"><i class="fa-solid fa-award"></i> Credentials</a></li>
+                <li><a href="#capabilities" class="nav-item"><i class="fa-solid fa-gears"></i> Capabilities</a></li>
+                <li><a href="#contact" class="nav-item"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+                <!-- Download CV Link -->
+                <li><a href="images/my-cv/CV_Nino_Dermie_Cagas.pdf" download style="color: #38bdf8; font-weight: 600;"><i class="fa-solid fa-file-pdf"></i> Download CV</a></li>
+            </ul>
+        </div>
+        <div class="handle" style="font-size: 0.75rem; text-align: center;">© 2026 Niño Dermie Cagas</div>
+    </aside>
+
+    <!-- Main Dashboard -->
+    <main>
+        <!-- Mobile Header & Navigation Dropdown -->
+        <div class="mobile-header-container">
+            <div class="mobile-profile-row">
+                <div class="mobile-profile-info">
+                    <div class="avatar-container" style="margin-bottom: 0;">
+                        <img src="assets/profile.jpg" alt="Niño Dermie Cagas" class="avatar" style="width: 48px; height: 48px;" onerror="this.src='https://api.iconify.design/lucide:user.svg?color=%2394a3b8'">
+                        <div class="status-dot" style="width: 10px; height: 10px; bottom: 2px; right: 2px;" title="Available for work"></div>
+                    </div>
+                    <div>
+                        <div class="profile-name" style="justify-content: flex-start; font-size: 0.95rem;">
+                            Niño Dermie Cagas <i class="fa-solid fa-circle-check verified-badge"></i>
+                        </div>
+                        <div class="handle" style="text-align: left; font-size: 0.78rem;">
+                            <a href="https://t.me/neimred_sc" target="_blank">@neimred_sc</a>
+                        </div>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+            
+            <ul class="mobile-nav-dropdown" id="mobileNav">
+                <li><a href="#home" class="nav-item"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="#projects" class="nav-item"><i class="fa-solid fa-folder-open"></i> Projects</a></li>
+                <li><a href="#templates" class="nav-item"><i class="fa-solid fa-table"></i> Templates & UI</a></li>
+                <li><a href="#about" class="nav-item"><i class="fa-solid fa-user"></i> About</a></li>
+                <li><a href="#credentials" class="nav-item"><i class="fa-solid fa-award"></i> Credentials</a></li>
+                <li><a href="#capabilities" class="nav-item"><i class="fa-solid fa-gears"></i> Capabilities</a></li>
+                <li><a href="#contact" class="nav-item"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+                <li><a href="images/my-cv/CV_Nino_Dermie_Cagas.pdf" download style="color: #38bdf8; font-weight: 600;"><i class="fa-solid fa-file-pdf"></i> Download CV</a></li>
+            </ul>
+        </div>
+
+        <!-- Home / Hero Section -->
+        <div id="home" class="hero-banner" data-aos="fade-down" data-aos-duration="800">
+            <div class="hero-title">
+                <h1>Bridging Surveillance, Systems & Creative Code.</h1>
+                <p>Casino Surveillance & Operations Manager (12+ years) bridging physical security infrastructure with full-stack software development. Architect of proprietary web intelligence suites, automated data processing pipelines, and advantage play risk models that eliminate manual overhead and safeguard property revenue.</p>
+                <p style="margin-top: 0.75rem; color: #38bdf8; font-weight: 600;">Specialized in casino data analytics, patron win/loss evaluation, high-value player liability tracking, and automated executive shift reporting.</p>
+            </div>
+            <div style="display: flex; gap: 0.85rem; flex-wrap: wrap; align-items: center;">
+                <a href="images/my-cv/CV_Nino_Dermie_Cagas.pdf" download class="cta-btn" style="background: rgba(255, 255, 255, 0.08); border: 1px solid var(--card-border); box-shadow: none;">
+                    <i class="fa-solid fa-file-arrow-down" style="color: #38bdf8;"></i>
+                    <span>Download CV</span>
+                </a>
+                <a href="#contact" class="cta-btn">
+                    <span>Get in touch</span>
+                    <i class="fa-solid fa-arrow-right-long"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Daily Drivers Ticker -->
+        <div id="tools" class="tools-ticker" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+            <span>Tech Stack</span>
+            <div class="tool-badge"><i class="fa-brands fa-square-js" style="color: #f7df1e;"></i> JavaScript ES6</div>
+            <div class="tool-badge"><i class="fa-solid fa-chart-pie" style="color: #38bdf8;"></i> Patron Win/Loss Analytics</div>
+            <div class="tool-badge"><i class="fa-solid fa-bolt" style="color: #ff4a00;"></i> Zapier & Automation</div>
+            <div class="tool-badge"><i class="fa-solid fa-code" style="color: #e34f26;"></i> HTML5 / CSS3 Art</div>
+            <div class="tool-badge"><i class="fa-solid fa-database" style="color: #38bdf8;"></i> MS Access & VBA</div>
+            <div class="tool-badge"><i class="fa-solid fa-table" style="color: #22c55e;"></i> Advanced Excel Modeling</div>
+            <div class="tool-badge"><i class="fa-solid fa-chart-line" style="color: #a855f7;"></i> Canvas API Rendering</div>
+        </div>
+
+        <!-- Bento Grid Layout -->
+        <div class="bento-grid">
+            
+            <!-- Projects Card -->
+            <div id="projects" class="bento-card card-large" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-header">
+                    <div class="card-title"><i class="fa-solid fa-laptop-code" style="color: #6366f1;"></i> FEATURED PROJECTS & SYSTEMS</div>
+                    <span style="font-size: 0.8rem; color: #38bdf8; font-weight: 600;">Click for Glimpse Preview</span>
+                </div>
+                <div class="card-desc">Bespoke web-based intelligence tools, shift scheduling utilities, KPI performance models, and 6-year property-wide database backbones.</div>
+                
+                <!-- Project 0: AJM Operations Command Center -->
+                <div class="project-link preview-trigger" data-project="ajm-dashboard">
+                    <div class="project-preview">
+                        <div>
+                            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem;">AJM Operations Command Center</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Engineered an executive e-commerce operations dashboard featuring multi-brand KPI benchmarking, zero-to-one launch readiness tracking, merchant underwriting risk logs, and real-time telemetry QA metrics.</p>
+                        </div>
+                        <i class="fa-solid fa-eye" style="color: #38bdf8;"></i>
+                    </div>
+                </div>
+
+                <!-- Project 1: D' Cagas SIRS Pro -->
+                <div class="project-link preview-trigger" data-project="sirs-pro">
+                    <div class="project-preview">
+                        <div>
+                            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem;">D' Cagas - Surveillance Intelligence & Reconnaissance System (SIRS Pro)</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Engineered a bespoke web-based surveillance intelligence and table protection platform featuring real-time 8-deck card depletion tracking, automated True Count computations for Dragon 7 and Panda 8 side bets, 7-seat VIP dock liability tracking, and Canvas-rendered trend matrices.</p>
+                        </div>
+                        <i class="fa-solid fa-eye" style="color: #38bdf8;"></i>
+                    </div>
+                </div>
+
+                <!-- Project 2: SIRS Database -->
+                <div class="project-link preview-trigger" data-project="sirs-db">
+                    <div class="project-preview">
+                        <div>
+                            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem;">Surveillance Incident Reporting System (SIRS)</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Maintained a foundational 6-year operational MS Access/VBA database engine for secure incident archiving, automated data exports, and executive reporting.</p>
+                        </div>
+                        <i class="fa-solid fa-eye" style="color: #38bdf8;"></i>
+                    </div>
+                </div>
+
+                <!-- Project 3: Shift Attendance Tracker -->
+                <div class="project-link preview-trigger" data-project="attendance-tracker">
+                    <div class="project-preview">
+                        <div>
+                            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem;">Web-Based Time & Attendance Tracker</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Lightweight utility for real-time shift duty hours, break logs, and attendance reporting.</p>
+                        </div>
+                        <i class="fa-solid fa-eye" style="color: #38bdf8;"></i>
+                    </div>
+                </div>
+
+                <!-- Project 4: Casino Operations & Shift Summary Report Processing System -->
+                <div class="project-link preview-trigger" data-project="shift-report">
+                    <div class="project-preview">
+                        <div>
+                            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem;">Casino Operations & Shift Summary Report System</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Developed an automated Excel-to-PDF data pipeline that extracts raw data from casino management systems, executes complex validation and error-checking routines, and compiles structured Shift Operations Summary Reports for executive review.</p>
+                        </div>
+                        <i class="fa-solid fa-eye" style="color: #38bdf8;"></i>
+                    </div>
+                </div>
+
+                <!-- Project 5: Surveillance Shift Roster Template -->
+                <div class="project-link preview-trigger" data-project="roster-template">
+                    <div class="project-preview">
+                        <div>
+                            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem;">Surveillance Shift Roster & Schedule Template</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Comprehensive shift planning model for managing personnel rotations, duty coverage, and leave tracking.</p>
+                        </div>
+                        <i class="fa-solid fa-eye" style="color: #38bdf8;"></i>
+                    </div>
+                </div>
+
+                <!-- Project 6: Surveillance Staff KPI Sample Report -->
+                <div class="project-link preview-trigger" data-project="kpi-sample">
+                    <div class="project-preview">
+                        <div>
+                            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem;">Surveillance Staff KPI Evaluation System & Sample Report</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Designed an advanced Excel-driven performance scoring model tracking surveillance operator metrics, incident detection rates, and compliance standards to drive accountability and streamline management audits.</p>
+                        </div>
+                        <i class="fa-solid fa-eye" style="color: #38bdf8;"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Templates & UI Emblem Card -->
+            <div id="templates" class="bento-card card-large" data-aos="fade-up" data-aos-delay="250">
+                <div class="card-header">
+                    <div class="card-title"><i class="fa-solid fa-table-cells" style="color: #22c55e;"></i> EXCEL TEMPLATES & CSS ARTWORK</div>
+                    <span style="font-size: 0.8rem; color: #a855f7; font-weight: 600;">Click for Glimpse Preview</span>
+                </div>
+                <div class="card-desc">Specialized gaming audit templates, shift management rosters, and custom pure SVG/CSS emblems.</div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+                    <div class="project-link preview-trigger" data-project="excel-templates" style="margin-bottom: 0;">
+                        <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.1rem; height: 100%; transition: all 0.25s ease;">
+                            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; color: #38bdf8;"><i class="fa-solid fa-file-excel"></i> Casino Games Templates</h4>
+                            <p style="font-size: 0.82rem; color: var(--text-muted);">Advanced Excel operational templates for Asian card games and automated shift roster layouts.</p>
+                        </div>
+                    </div>
+                    <div class="project-link preview-trigger" data-project="css-emblem" style="margin-bottom: 0;">
+                        <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.1rem; height: 100%; transition: all 0.25s ease;">
+                            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; color: #f59e0b;"><i class="fa-solid fa-paintbrush"></i> Custom Palazzo D'Cagas Emblem</h4>
+                            <p style="font-size: 0.82rem; color: var(--text-muted);">Hand-crafted vector graphic emblem engineered purely with inline SVG paths and metallic gold styling.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Vector Emblem Showcase Container -->
+                <div class="emblem-showcase project-link preview-trigger" data-project="css-emblem" style="margin-bottom: 0;">
+                    <div style="width: 100%; max-width: 220px; aspect-ratio: 1/1; margin: 0 auto; pointer-events: none;">
+                        <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%; display: block;">
+                            <defs>
+                                <radialGradient id="cardBgVelvet" cx="50%" cy="48%" r="68%">
+                                    <stop offset="0%" stop-color="#56000e" />
+                                    <stop offset="45%" stop-color="#320008" />
+                                    <stop offset="85%" stop-color="#190003" />
+                                    <stop offset="100%" stop-color="#0a0001" />
+                                </radialGradient>
+                                <linearGradient id="cardGoldMetallic" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#fffce6" />
+                                    <stop offset="25%" stop-color="#f5d680" />
+                                    <stop offset="55%" stop-color="#c99718" />
+                                    <stop offset="85%" stop-color="#936806" />
+                                    <stop offset="100%" stop-color="#ffd94d" />
+                                </linearGradient>
+                                <radialGradient id="cardPetalGlow" cx="50%" cy="80%" r="70%">
+                                    <stop offset="0%" stop-color="rgba(255, 220, 60, 0.45)" />
+                                    <stop offset="60%" stop-color="rgba(212, 160, 23, 0.22)" />
+                                    <stop offset="100%" stop-color="rgba(147, 104, 6, 0.05)" />
+                                </radialGradient>
+                                <radialGradient id="cardBaseAura" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" stop-color="rgba(255, 215, 0, 0.35)" />
+                                    <stop offset="100%" stop-color="rgba(0, 0, 0, 0)" />
+                                </radialGradient>
+                                <filter id="cardLotusShadow" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feDropShadow dx="0" dy="8" stdDeviation="14" flood-color="#000000" flood-opacity="0.9" />
+                                    <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#ffd700" flood-opacity="0.3" />
+                                </filter>
+                            </defs>
+                            <rect width="800" height="800" fill="url(#cardBgVelvet)" rx="16" />
+                            <rect x="18" y="18" width="764" height="764" rx="12" stroke="url(#cardGoldMetallic)" stroke-width="1.8" opacity="0.65" fill="none" />
+                            <ellipse cx="400" cy="450" rx="300" ry="180" fill="url(#cardBaseAura)" />
+                            <g transform="translate(400, 410) scale(3.8) translate(-110, -70)" filter="url(#cardLotusShadow)">
+                                <path d="M 28 116 A 84 84 0 0 1 192 116" stroke="url(#cardGoldMetallic)" stroke-width="1.2" stroke-dasharray="2 4" opacity="0.55" fill="none" />
+                                <path d="M 44 116 A 68 68 0 0 1 176 116" stroke="url(#cardGoldMetallic)" stroke-width="0.9" opacity="0.4" fill="none" />
+                                <circle cx="110" cy="14" r="2.4" fill="#fffce6" />
+                                <circle cx="70" cy="28" r="1.6" fill="url(#cardGoldMetallic)" />
+                                <circle cx="150" cy="28" r="1.6" fill="url(#cardGoldMetallic)" />
+                                <circle cx="42" cy="62" r="1.4" fill="url(#cardGoldMetallic)" />
+                                <circle cx="178" cy="62" r="1.4" fill="url(#cardGoldMetallic)" />
+                                <path d="M 110 114 C 55 114 24 88 30 76 C 42 79 72 96 110 114 Z" fill="url(#cardPetalGlow)" stroke="url(#cardGoldMetallic)" stroke-width="1.4" />
+                                <path d="M 110 114 C 165 114 196 88 190 76 C 178 79 148 96 110 114 Z" fill="url(#cardPetalGlow)" stroke="url(#cardGoldMetallic)" stroke-width="1.4" />
+                                <path d="M 110 114 C 64 104 38 64 52 48 C 64 58 86 84 110 114 Z" fill="url(#cardPetalGlow)" stroke="url(#cardGoldMetallic)" stroke-width="1.5" />
+                                <path d="M 110 114 C 156 104 182 64 168 48 C 156 58 134 84 110 114 Z" fill="url(#cardPetalGlow)" stroke="url(#cardGoldMetallic)" stroke-width="1.5" />
+                                <path d="M 110 114 C 80 94 62 44 82 28 C 92 42 104 74 110 114 Z" fill="url(#cardPetalGlow)" stroke="url(#cardGoldMetallic)" stroke-width="1.6" />
+                                <path d="M 110 114 C 140 94 158 44 138 28 C 128 42 116 74 110 114 Z" fill="url(#cardPetalGlow)" stroke="url(#cardGoldMetallic)" stroke-width="1.6" />
+                                <path d="M 110 114 C 96 82 94 40 110 22 C 126 40 124 82 110 114 Z" fill="url(#cardPetalGlow)" stroke="url(#cardGoldMetallic)" stroke-width="1.9" />
+                                <path d="M 110 108 L 110 36" stroke="url(#cardGoldMetallic)" stroke-width="1.3" opacity="0.8" fill="none" />
+                                <polygon points="110,29 113,34 110,39 107,34" fill="#fffce6" />
+                                <path d="M 72 119 Q 110 113 148 119 Q 110 123 72 119 Z" fill="url(#cardGoldMetallic)" />
+                                <path d="M 82 126 L 138 126" stroke="url(#cardGoldMetallic)" stroke-width="2.4" stroke-linecap="round" />
+                                <circle cx="110" cy="119" r="3.4" fill="#fffce6" />
+                                <circle cx="94" cy="119" r="2" fill="#fffce6" />
+                                <circle cx="126" cy="119" r="2" fill="#fffce6" />
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Card -->
+            <div id="about" class="bento-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-title"><i class="fa-solid fa-user-gear" style="color: #a855f7;"></i> ABOUT</div>
+                <div class="card-desc">Casino Operations & Technical Specialist.</div>
+                
+                <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem;">
+                    12+ years managing casino surveillance and resort operations combined with an advanced Computer Science/IT background. Specialized in eliminating manual overhead through custom software development, patron win/loss analytics, and workflow automation.
+                </p>
+
+                <div class="stat-grid">
+                    <div class="stat-box">
+                        <div class="stat-number">12+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">6 Yrs</div>
+                        <div class="stat-label">SIRS Uptime</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Credentials Card -->
+            <div id="credentials" class="bento-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="card-title"><i class="fa-solid fa-award" style="color: #f59e0b;"></i> CREDENTIALS</div>
+                <div class="card-desc">Domain mastery and technical education.</div>
+                <ul style="font-size: 0.85rem; color: var(--text-muted); padding-left: 1.2rem; line-height: 1.8;">
+                    <li>BS Computer Science & 27 Master's Units (AMA University)</li>
+                    <li>Surveillance Operations Management (Palace Hotel, IPI, RWM)</li>
+                    <li>Advantage Play & Risk Modeling (Dragon 7, Panda 8)</li>
+                    <li>SOP Development & Compliance Architecture</li>
+                </ul>
+            </div>
+
+            <!-- Capabilities Card -->
+            <div id="capabilities" class="bento-card card-large" data-aos="fade-up" data-aos-delay="500">
+                <div class="card-title"><i class="fa-solid fa-rocket" style="color: #38bdf8;"></i> CAPABILITIES</div>
+                <div class="card-desc">Bridging physical security infrastructure with team leadership, data analytics, and process automation.</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; font-size: 0.9rem;">
+                    <div class="tool-badge" style="justify-content: flex-start; padding: 12px;">01. Surveillance & Asset Protection</div>
+                    <div class="tool-badge" style="justify-content: flex-start; padding: 12px;">02. Staff & Shift Team Management</div>
+                    <div class="tool-badge" style="justify-content: flex-start; padding: 12px;">03. Web-Based Intelligence Suites</div>
+                    <div class="tool-badge" style="justify-content: flex-start; padding: 12px;">04. Database Design (MS Access / VBA)</div>
+                    <div class="tool-badge" style="justify-content: flex-start; padding: 12px;">05. Advanced Excel Templates & CSS UI</div>
+                    <div class="tool-badge" style="justify-content: flex-start; padding: 12px;">06. Data Analysis & Patron Win/Loss Reports</div>
+                    <div class="tool-badge" style="justify-content: flex-start; padding: 12px;">07. Advantage Play & Risk Mitigation</div>
+                    <div class="tool-badge" style="justify-content: flex-start; padding: 12px;">08. Gaming Audit & Compliance Architecture</div>
+                    <div class="tool-badge" style="justify-content: flex-start; padding: 12px;">09. Workflow Automation & Systems Integration</div>
+                </div>
+            </div>
+
+            <!-- Contact Card -->
+            <div id="contact" class="bento-card card-large" data-aos="fade-up" data-aos-delay="600">
+                <div class="card-title"><i class="fa-solid fa-comments" style="color: #22c55e;"></i> GET IN TOUCH</div>
+                <div class="card-desc">Reach out for professional inquiries or technical collaborations.</div>
+                
+                <div class="contact-box">
+                    <a href="mailto:usndscagas@gmail.com" class="social-btn" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="https://t.me/neimred_sc" target="_blank" class="social-btn" title="Telegram"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="https://linkedin.com/in/niño-dermie-c08" target="_blank" class="social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://github.com/ninowfh08" target="_blank" class="social-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Project Preview Modal Overlay -->
+    <div id="projectModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); z-index: 1000; align-items: center; justify-content: center; padding: 1.5rem;">
+        <div style="background: #1e293b; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 20px; width: 100%; max-width: 1100px; max-height: 92vh; overflow-y: auto; padding: 2.25rem; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);">
+            <button id="closeModal" style="position: absolute; top: 1.25rem; right: 1.25rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #f8fafc; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem;"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div id="modalContent">
+                <!-- Dynamically populated via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Image Lightbox Overlay -->
+    <div id="imageZoomModal" onclick="this.style.display='none'" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.92); z-index: 2000; align-items: center; justify-content: center; cursor: zoom-out; padding: 1rem;">
+        <img id="zoomedImg" src="" style="max-width: 95vw; max-height: 95vh; object-fit: contain; border-radius: 10px; box-shadow: 0 0 30px rgba(0,0,0,0.8);">
+    </div>
+
+    <!-- AOS Script & Interactive JavaScript -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Scroll Animations
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50
+        });
+
+        // Mobile Menu Toggle Logic
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+
+        if (menuToggle && mobileNav) {
+            menuToggle.addEventListener('click', () => {
+                mobileNav.classList.toggle('open');
+                const icon = menuToggle.querySelector('i');
+                if (mobileNav.classList.contains('open')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                } else {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            });
+
+            mobileNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNav.classList.remove('open');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                });
+            });
+        }
+
+        // Smooth Scroll Active State Tracking via IntersectionObserver
+        const sections = document.querySelectorAll('#home, #projects, #templates, #about, #credentials, #capabilities, #contact');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -60% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Global Helper for PDF Switching
+        function switchPdf(url, btnElement) {
+            const iframe = document.getElementById('templateIframe');
+            if (iframe) {
+                iframe.src = url + '#view=FitH&toolbar=0&navpanes=0&scrollbar=0';
+            }
+            document.querySelectorAll('.doc-btn').forEach(b => {
+                b.style.background = 'rgba(255,255,255,0.05)';
+            });
+            if (btnElement) {
+                btnElement.style.background = '#6366f1';
+            }
+        }
+
+        // Global Helper for Live Emblem Mode Toggle
+        function switchEmblemMode(mode) {
+            const btnFull = document.getElementById('modalBtnFull');
+            const btnLogo = document.getElementById('modalBtnLogo');
+            const textGroup = document.getElementById('mTextGroup');
+            const lotusGroup = document.getElementById('mLotusGroup');
+            const auraEl = document.getElementById('mAuraEl');
+
+            if (mode === 'logo-only') {
+                if (btnLogo) {
+                    btnLogo.style.background = 'linear-gradient(180deg, #ffe066 0%, #d4af37 100%)';
+                    btnLogo.style.color = '#000';
+                    btnLogo.style.border = 'none';
+                }
+                if (btnFull) {
+                    btnFull.style.background = '#2a0005';
+                    btnFull.style.color = '#e5c06e';
+                    btnFull.style.border = '1px solid #e5c06e';
+                }
+                if (textGroup) textGroup.style.display = 'none';
+                if (lotusGroup) lotusGroup.setAttribute('transform', 'translate(400, 410) scale(3.8) translate(-110, -70)');
+                if (auraEl) {
+                    auraEl.setAttribute('cy', '450');
+                    auraEl.setAttribute('rx', '300');
+                    auraEl.setAttribute('ry', '180');
+                }
+            } else {
+                if (btnFull) {
+                    btnFull.style.background = 'linear-gradient(180deg, #ffe066 0%, #d4af37 100%)';
+                    btnFull.style.color = '#000';
+                    btnFull.style.border = 'none';
+                }
+                if (btnLogo) {
+                    btnLogo.style.background = '#2a0005';
+                    btnLogo.style.color = '#e5c06e';
+                    btnLogo.style.border = '1px solid #e5c06e';
+                }
+                if (textGroup) textGroup.style.display = 'inline';
+                if (lotusGroup) lotusGroup.setAttribute('transform', 'translate(400, 532) scale(3.4) translate(-110, -126)');
+                if (auraEl) {
+                    auraEl.setAttribute('cy', '530');
+                    auraEl.setAttribute('rx', '260');
+                    auraEl.setAttribute('ry', '120');
+                }
+            }
+        }
+
+        // Project Data for Interactive Glimpse Previews
+        const projectData = {
+			'ajm-dashboard': {
+				title: "AJM Operations Command Center",
+				category: "E-Commerce & Operations Intelligence Suite",
+				desc: "An executive-grade, single-file dashboard engineered for multi-brand e-commerce portfolio oversight and COO decision support.",
+				demoUrl: "/my-portfolio/images/ajm-dashboard/ajm-operations-dashboard.html",
+				glimpse: "Built as a production-ready operations suite for multi-brand portfolios..."
+			},
+            'sirs-pro': {
+                title: "D' Cagas - Surveillance Intelligence & Reconnaissance System (SIRS Pro)",
+                category: "Web Intelligence Suite",
+                desc: "A bespoke web-based surveillance intelligence and table protection platform.",
+                image: "images/sirs_pro/photo_2026-10-15_22-25-38.jpg",
+                images: [
+                    "images/sirs_pro/photo_2026-10-15_22-25-38.jpg",
+                    "images/sirs_pro/photo_2026-10-15_22-25-56.jpg",
+                    "images/sirs_pro/photo_2026-10-15_22-26-01.jpg",
+                    "images/sirs_pro/photo_2026-10-15_22-26-04.jpg",
+                    "images/sirs_pro/photo_2026-10-15_22-26-08.jpg",
+                    "images/sirs_pro/photo_2026-10-15_22-26-11.jpg"
+                ],
+                pdfUrl: "images/sirs_pro/sirs-report.pdf",
+                glimpse: "Engineered automated 8-deck card depletion tracking live tray counts to compute True Counts and risk thresholds for Dragon 7, Panda 8, and side bets. Features 7-seat VIP dock liability tracking, Canvas-rendered Big Road & Bead Plate prediction matrices, and a zero-mouse numpad hotkey matrix.",
+                demoUrl: "https://ninowfh08.github.io/sirs-pro-demo/"
+            },
+            'sirs-db': {
+                title: "Surveillance Incident Reporting System (SIRS)",
+                category: "Property-Wide MS Access Database & User Manual",
+                desc: "The foundational 6-year operational backbone running continuously for security archiving, complete with system architecture documentation.",
+                pdfUrl: "images/sirs_db/User Manual - SIRS-Beta 2.0.pdf",
+                glimpse: "Securely logs, archives, and tracks security and surveillance incidents property-wide with automated data export pipelines feeding structured shift records straight into executive management reports and loss audits. Review the embedded user manual for complete system layout diagrams and operational workflows."
+            },
+            'attendance-tracker': {
+                title: "Web-Based Time & Attendance Tracker",
+                category: "Workforce Management Utility",
+                desc: "A lightweight web application built to streamline shift logging and break tracking.",
+                images: [
+                    "images/attendance-tracker/Screenshot 2026-10-16 004651.png",
+                    "images/attendance-tracker/Screenshot 2026-10-16 004726.png",
+                    "images/attendance-tracker/Screenshot 2026-10-16 004758.png",
+                    "images/attendance-tracker/Screenshot 2026-10-16 004853.png",
+                    "images/attendance-tracker/Screenshot 2026-10-16 004934.png"
+                ],
+                glimpse: "Tracks real-time duty hours, break logs, and attendance records for surveillance personnel, featuring instant print layouts to eliminate manual paper timesheets."
+            },
+            'shift-report': {
+                title: "Casino Operations & Shift Summary Report Processing System",
+                category: "Excel Data Automation & Validation System",
+                desc: "An automated Excel processing pipeline that extracts raw data from casino gaming systems, executes validation routines, and compiles executive PDF summary reports.",
+                pdfUrl: "images/shift-report/Shift_Operations_Summary_Report.pdf",
+                glimpse: "Extracts operational floor metrics, game results, and floor activity from casino backend systems into Excel. Processes data through automated validation formulas and error checks, generating structured PDF Shift Operations Summary Reports for executive reviews."
+            },
+            'roster-template': {
+                title: "Surveillance Shift Roster & Schedule Template",
+                category: "Workforce & Operations Management",
+                desc: "An operational scheduling utility designed for surveillance shift rotations, duty hours, and coverage management.",
+                pdfUrl: "images/roster-template/rostertemp.pdf",
+                glimpse: "Engineered to eliminate schedule overlaps and streamline personnel deployment across multi-shift surveillance operations with automated hour totals and shift logs."
+            },
+            'kpi-sample': {
+                title: "Surveillance Staff KPI Evaluation System & Sample Report",
+                category: "Advanced Excel Performance Analytics",
+                desc: "An automated Excel-driven performance evaluation system and KPI reporting tool for surveillance personnel.",
+                pdfUrl: "images/kpi-sample/Staff SURV KPI-2026.pdf",
+                glimpse: "Designed to measure, benchmark, and visualize key performance indicators (KPIs) for casino surveillance staff. Features individual scoring matrices, incident detection tracking, compliance metrics, and automated summary reports for management reviews."
+            },
+            'excel-templates': {
+                title: "Casino Gaming Audit & Operational Templates",
+                category: "Advanced Excel & VBA Suite",
+                desc: "A comprehensive library of specialized casino gaming audit spreadsheets, side bet liability calculators, and head-to-head evaluation models.",
+                glimpse: "Includes mathematical evaluation matrices for Asian card games (Niu Niu, Power 5), Commission & Non-Commission Baccarat models with multi-stage insurance tracking, Dragon 7 & Panda 8 advantage play spreadsheets, and Blackjack H2H audit rosters.",
+                pdfList: [
+                    { name: "Staff SURV KPI Sample", url: "images/kpi-sample/Staff SURV KPI-2026.pdf" },
+                    { name: "Shift Operations Summary Report", url: "images/shift-report/Shift_Operations_Summary_Report.pdf" },
+                    { name: "Shift Roster Template", url: "images/roster-template/rostertemp.pdf" },
+                    { name: "Blackjack H2H Template", url: "images/excel_templates/bj_h2h.pdf" },
+                    { name: "D7-P8-MB w INS H2H (MULTIPLE)", url: "images/excel_templates/d7_p8_mb_multiple.pdf" },
+                    { name: "D7-P8-MB w INS H2H (SINGLE)", url: "images/excel_templates/d7_p8_mb_single.pdf" },
+                    { name: "D7-P8-NCB w INS H2H (MULTIPLE)", url: "images/excel_templates/d7_p8_ncb_multiple.pdf" },
+                    { name: "D7-P8-NCB w INS H2H (SINGLE)", url: "images/excel_templates/d7_p8_ncb_single.pdf" },
+                    { name: "D7-P8-BST_MB w INS H2H (MULTIPLE)", url: "images/excel_templates/d7_p8_bst_mb_multiple.pdf" },
+                    { name: "D7-P8-BST_MB w INS H2H (SINGLE)", url: "images/excel_templates/d7_p8_bst_mb_single.pdf" },
+                    { name: "D7-P8-BST_NCB w INS H2H (SINGLE)", url: "images/excel_templates/d7_p8_bst_ncb_single.pdf" },
+                    { name: "MB w INS H2H (MULTIPLE)", url: "images/excel_templates/mb_multiple.pdf" },
+                    { name: "MB w INS H2H (SINGLE)", url: "images/excel_templates/mb_single.pdf" },
+                    { name: "NCB w INS H2H (MULTIPLE)", url: "images/excel_templates/ncb_multiple.pdf" },
+                    { name: "NCB w INS H2H (SINGLE)", url: "images/excel_templates/ncb_single.pdf" },
+                    { name: "NIU NIU H2H TEMPLATE", url: "images/excel_templates/niu_niu_h2h.pdf" },
+                    { name: "NIU NIU POWER 5 TEMPLATE", url: "images/excel_templates/niu_niu_power5.pdf" }
+                ]
+            },
+            'css-emblem': {
+                title: "Palazzo D'Cagas - Signature Emblem & Brand Suite",
+                category: "Pure Vector SVG & CSS Design Artistry",
+                desc: "An interactive luxury brand emblem generator featuring royal velvet gradients, custom faceted gold elements, and dynamic mode switching.",
+                isLiveEmblem: true,
+                glimpse: "Designed and engineered as a high-end luxury insignia for hospitality and gaming operations. Built using raw SVG paths, responsive scaling transforms, multi-stop linear and radial gold gradients, and dynamic layout switching between Full Brand Lockup and Emblem-Only modes."
+            }
+        };
+
+        // Open Glimpse Modal on Click
+        document.querySelectorAll('.preview-trigger').forEach(card => {
+            card.addEventListener('click', (e) => {
+                e.preventDefault();
+                const projectId = card.getAttribute('data-project');
+                const data = projectData[projectId];
+                
+                if (data) {
+                    let customContentHtml = '';
+
+                    // Live Interactive SVG Emblem Renderer
+                    if (data.isLiveEmblem) {
+                        customContentHtml = `
+                            <div style="background: #0d0002; border-radius: 14px; padding: 1.5rem; border: 1px solid rgba(255,215,0,0.3); margin-bottom: 1.5rem; text-align: center;">
+                                <div style="display: flex; justify-content: center; gap: 8px; margin-bottom: 1rem;">
+                                    <button onclick="switchEmblemMode('full')" id="modalBtnFull" style="background: linear-gradient(180deg, #ffe066 0%, #d4af37 100%); color: #000; border: none; padding: 6px 16px; font-size: 12px; font-weight: 800; border-radius: 20px; cursor: pointer; transition: all 0.2s ease;">👑 Logo + Text</button>
+                                    <button onclick="switchEmblemMode('logo-only')" id="modalBtnLogo" style="background: #2a0005; color: #e5c06e; border: 1px solid #e5c06e; padding: 6px 16px; font-size: 12px; font-weight: 800; border-radius: 20px; cursor: pointer; transition: all 0.2s ease;">✨ Emblem Only</button>
+                                </div>
+                                <div style="max-width: 380px; margin: 0 auto; aspect-ratio: 1/1; border-radius: 8px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.9);">
+                                    <svg id="modalAvatarSvg" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%; display: block;">
+                                        <defs>
+                                            <radialGradient id="mBgVelvet" cx="50%" cy="48%" r="68%">
+                                                <stop offset="0%" stop-color="#56000e" /><stop offset="45%" stop-color="#320008" /><stop offset="85%" stop-color="#190003" /><stop offset="100%" stop-color="#0a0001" />
+                                            </radialGradient>
+                                            <linearGradient id="mGoldMetallic" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" stop-color="#fffce6" /><stop offset="25%" stop-color="#f5d680" /><stop offset="55%" stop-color="#c99718" /><stop offset="85%" stop-color="#936806" /><stop offset="100%" stop-color="#ffd94d" />
+                                            </linearGradient>
+                                            <radialGradient id="mPetalGlow" cx="50%" cy="80%" r="70%">
+                                                <stop offset="0%" stop-color="rgba(255, 220, 60, 0.45)" /><stop offset="60%" stop-color="rgba(212, 160, 23, 0.22)" /><stop offset="100%" stop-color="rgba(147, 104, 6, 0.05)" />
+                                            </radialGradient>
+                                            <radialGradient id="mBaseAura" cx="50%" cy="50%" r="50%">
+                                                <stop offset="0%" stop-color="rgba(255, 215, 0, 0.35)" /><stop offset="100%" stop-color="rgba(0, 0, 0, 0)" />
+                                            </radialGradient>
+                                            <filter id="mLotusShadow" x="-20%" y="-20%" width="140%" height="140%">
+                                                <feDropShadow dx="0" dy="8" stdDeviation="14" flood-color="#000000" flood-opacity="0.9" />
+                                                <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#ffd700" flood-opacity="0.3" />
+                                            </filter>
+                                        </defs>
+                                        <rect width="800" height="800" fill="url(#mBgVelvet)" />
+                                        <rect x="18" y="18" width="764" height="764" rx="4" stroke="url(#mGoldMetallic)" stroke-width="1.8" opacity="0.65" fill="none" />
+                                        <rect x="26" y="26" width="748" height="748" rx="2" stroke="url(#mGoldMetallic)" stroke-width="0.8" opacity="0.35" fill="none" />
+                                        <ellipse id="mAuraEl" cx="400" cy="530" rx="260" ry="120" fill="url(#mBaseAura)" />
+                                        <g id="mLotusGroup" transform="translate(400, 532) scale(3.4) translate(-110, -126)" filter="url(#mLotusShadow)">
+                                            <path d="M 28 116 A 84 84 0 0 1 192 116" stroke="url(#mGoldMetallic)" stroke-width="1.2" stroke-dasharray="2 4" opacity="0.55" fill="none" />
+                                            <path d="M 44 116 A 68 68 0 0 1 176 116" stroke="url(#mGoldMetallic)" stroke-width="0.9" opacity="0.4" fill="none" />
+                                            <circle cx="110" cy="14" r="2.4" fill="#fffce6" />
+                                            <circle cx="70" cy="28" r="1.6" fill="url(#mGoldMetallic)" />
+                                            <circle cx="150" cy="28" r="1.6" fill="url(#mGoldMetallic)" />
+                                            <circle cx="42" cy="62" r="1.4" fill="url(#mGoldMetallic)" />
+                                            <circle cx="178" cy="62" r="1.4" fill="url(#mGoldMetallic)" />
+                                            <path d="M 110 114 C 55 114 24 88 30 76 C 42 79 72 96 110 114 Z" fill="url(#mPetalGlow)" stroke="url(#mGoldMetallic)" stroke-width="1.4" />
+                                            <path d="M 110 114 C 165 114 196 88 190 76 C 178 79 148 96 110 114 Z" fill="url(#mPetalGlow)" stroke="url(#mGoldMetallic)" stroke-width="1.4" />
+                                            <path d="M 110 114 C 64 104 38 64 52 48 C 64 58 86 84 110 114 Z" fill="url(#mPetalGlow)" stroke="url(#mGoldMetallic)" stroke-width="1.5" />
+                                            <path d="M 110 114 C 156 104 182 64 168 48 C 156 58 134 84 110 114 Z" fill="url(#mPetalGlow)" stroke="url(#mGoldMetallic)" stroke-width="1.5" />
+                                            <path d="M 110 114 C 80 94 62 44 82 28 C 92 42 104 74 110 114 Z" fill="url(#mPetalGlow)" stroke="url(#mGoldMetallic)" stroke-width="1.6" />
+                                            <path d="M 110 114 C 140 94 158 44 138 28 C 128 42 116 74 110 114 Z" fill="url(#mPetalGlow)" stroke="url(#mGoldMetallic)" stroke-width="1.6" />
+                                            <path d="M 110 114 C 96 82 94 40 110 22 C 126 40 124 82 110 114 Z" fill="url(#mPetalGlow)" stroke="url(#mGoldMetallic)" stroke-width="1.9" />
+                                            <path d="M 110 108 L 110 36" stroke="url(#mGoldMetallic)" stroke-width="1.3" opacity="0.8" fill="none" />
+                                            <polygon points="110,29 113,34 110,39 107,34" fill="#fffce6" />
+                                            <path d="M 72 119 Q 110 113 148 119 Q 110 123 72 119 Z" fill="url(#mGoldMetallic)" />
+                                            <path d="M 82 126 L 138 126" stroke="url(#mGoldMetallic)" stroke-width="2.4" stroke-linecap="round" />
+                                            <circle cx="110" cy="119" r="3.4" fill="#fffce6" />
+                                            <circle cx="94" cy="119" r="2" fill="#fffce6" />
+                                            <circle cx="126" cy="119" r="2" fill="#fffce6" />
+                                        </g>
+                                        <g id="mTextGroup">
+                                            <text x="400" y="588" text-anchor="middle" fill="#fce79f" font-family="'Cinzel', Georgia, serif" font-size="37" font-weight="800" letter-spacing="5">PALAZZO D'CAGAS</text>
+                                            <text x="400" y="638" text-anchor="middle" fill="#edd08a" font-family="'Montserrat', sans-serif" font-size="20.5" font-weight="800" letter-spacing="8.5" opacity="0.98">RESORT &amp; CASINO</text>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                        `;
+                    }
+
+                    // Special Action Button for Dashboard Demo Link
+                    let demoButtonHtml = '';
+                    if (data.demoUrl) {
+                        demoButtonHtml = `
+                            <div style="margin-top: 1rem; margin-bottom: 1.25rem;">
+                                <a href="${data.demoUrl}" target="_blank" style="background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); color: #fff; padding: 0.75rem 1.5rem; border-radius: 99px; text-decoration: none; font-weight: 700; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4); transition: all 0.2s ease;">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Launch Live Dashboard Demo
+                                </a>
+                            </div>
+                        `;
+                    }
+
+                    let galleryHtml = '';
+                    if (data.images && data.images.length > 0) {
+                        const thumbnails = data.images.map(img => 
+                            '<img src="' + img + '" onclick="document.getElementById(\'mainModalImg\').src=\'' + img + '\'" style="width: 90px; height: 62px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 1px solid rgba(255,255,255,0.15); transition: all 0.2s ease;" onmouseover="this.style.opacity=\'0.8\'" onmouseout="this.style.opacity=\'1\'">'
+                        ).join('');
+
+                        galleryHtml = 
+                            '<div style="margin-bottom: 1.25rem;">' +
+                                '<div style="width: 100%; height: 500px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: #0f172a; margin-bottom: 0.75rem; cursor: zoom-in; position: relative;" onclick="document.getElementById(\'zoomedImg\').src=document.getElementById(\'mainModalImg\').src; document.getElementById(\'imageZoomModal\').style.display=\'flex\';">' +
+                                    '<img id="mainModalImg" src="' + data.images[0] + '" alt="' + data.title + ' Preview" style="width: 100%; height: 100%; object-fit: contain; background: #0f172a;">' +
+                                    '<div style="position: absolute; bottom: 12px; right: 12px; background: rgba(15, 23, 42, 0.88); color: #38bdf8; padding: 8px 14px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.15); pointer-events: none; display: flex; align-items: center; gap: 6px;">' +
+                                        '<i class="fa-solid fa-magnifying-glass-plus"></i> Click for Fullscreen View' +
+                                    '</div>' +
+                                '</div>' +
+                                '<div style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 6px;">' +
+                                    thumbnails +
+                                '</div>' +
+                            '</div>';
+                    } else if (data.image) {
+                        galleryHtml = 
+                            '<div style="width: 100%; height: 450px; border-radius: 12px; overflow: hidden; margin-bottom: 1.25rem; border: 1px solid rgba(255,255,255,0.1); background: #0f172a; cursor: zoom-in; position: relative;" onclick="document.getElementById(\'zoomedImg\').src=\'' + data.image + '\'; document.getElementById(\'imageZoomModal\').style.display=\'flex\';">' +
+                                '<img src="' + data.image + '" alt="' + data.title + ' Preview" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.parentElement.style.display=\'none\'">' +
+                                '<div style="position: absolute; bottom: 12px; right: 12px; background: rgba(15, 23, 42, 0.88); color: #38bdf8; padding: 8px 14px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.15); pointer-events: none; display: flex; align-items: center; gap: 6px;">' +
+                                    '<i class="fa-solid fa-magnifying-glass-plus"></i> Click for Fullscreen View' +
+                                '</div>' +
+                            '</div>';
+                    }
+
+                    let pdfListHtml = '';
+                    if (data.pdfList && data.pdfList.length > 0) {
+                        const buttons = data.pdfList.map((doc, idx) => 
+                            '<button onclick="switchPdf(\'' + doc.url + '\', this)" class="doc-btn" style="background: ' + (idx === 0 ? '#6366f1' : 'rgba(255,255,255,0.05)') + '; border: 1px solid rgba(255,255,255,0.12); color: #f8fafc; padding: 0.35rem 0.65rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; line-height: 1.2; transition: all 0.2s ease;">' +
+                                '<i class="fa-solid fa-file-excel" style="color: #22c55e;"></i> ' + doc.name +
+                            '</button>'
+                        ).join('');
+
+                        pdfListHtml = 
+                            '<div style="margin-bottom: 1.5rem;">' +
+                                '<div style="font-size: 0.85rem; font-weight: 700; color: #38bdf8; margin-bottom: 0.5rem;">' +
+                                    '<i class="fa-solid fa-list-check"></i> Select Template Document to View:' +
+                                '</div>' +
+                                '<div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1rem; max-height: 100px; overflow-y: auto; padding: 4px; align-items: center;">' +
+                                    buttons +
+                                '</div>' +
+                                '<div style="width: 100%; height: 750px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: #0f172a;">' +
+                                    '<iframe id="templateIframe" src="' + data.pdfList[0].url + '#view=FitH&toolbar=0&navpanes=0&scrollbar=0" style="width: 100%; height: 100%; border: none;"></iframe>' +
+                                '</div>' +
+                            '</div>';
+                    }
+
+                    let pdfViewerSection = '';
+                    if (data.pdfUrl) {
+                        const buttonLabel = projectId === 'sirs-db' ? 'View System User Manual & Photos (PDF)' : (projectId === 'roster-template' ? 'View Roster Template PDF' : (projectId === 'kpi-sample' ? 'View Staff KPI Sample Report PDF' : (projectId === 'shift-report' ? 'View Shift Operations Summary Report (PDF)' : 'View Sample Report (Embedded)')));
+                        const autoShowPdf = projectId === 'roster-template' || projectId === 'kpi-sample' || projectId === 'shift-report';
+                        pdfViewerSection = 
+                            '<div style="margin-top: 1rem;">' +
+                                '<button onclick="let v = document.getElementById(\'embeddedPdfViewer\'); v.style.display = v.style.display === \'none\' ? \'block\' : \'none\';" style="background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; padding: 0.65rem 1.25rem; border-radius: 99px; text-decoration: none; font-weight: 600; font-size: 0.85rem; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">' +
+                                    '<i class="fa-solid fa-file-pdf"></i> ' + buttonLabel +
+                                '</button>' +
+                                '<div id="embeddedPdfViewer" style="display: ' + (autoShowPdf ? 'block' : 'none') + '; margin-top: 1rem; width: 100%; height: 800px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: #0f172a;">' +
+                                    '<iframe src="' + data.pdfUrl + '#view=FitH&toolbar=0&navpanes=0&scrollbar=0" style="width: 100%; height: 100%; border: none;"></iframe>' +
+                                '</div>' +
+                            '</div>';
+                    }
+
+                    document.getElementById('modalContent').innerHTML = 
+                        '<div style="font-size: 0.75rem; font-weight: 700; color: #6366f1; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">' + data.category + '</div>' +
+                        '<h3 style="font-size: 1.5rem; font-weight: 800; color: #f8fafc; margin-bottom: 0.75rem;">' + data.title + '</h3>' +
+                        '<p style="color: #94a3b8; font-size: 1rem; margin-bottom: 1.25rem; line-height: 1.6;">' + data.desc + '</p>' +
+                        demoButtonHtml +
+                        customContentHtml +
+                        galleryHtml +
+                        pdfListHtml +
+                        '<div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 1.25rem; margin-bottom: 1.5rem;">' +
+                            '<div style="font-size: 0.85rem; font-weight: 700; color: #38bdf8; margin-bottom: 0.4rem;"><i class="fa-solid fa-eye"></i> Project Glimpse & Capabilities</div>' +
+                            '<p style="font-size: 0.95rem; color: #f8fafc; line-height: 1.6;">' + data.glimpse + '</p>' +
+                        '</div>' +
+                        pdfViewerSection;
+
+                    document.getElementById('projectModal').style.display = 'flex';
+                }
+            });
+        });
+
+        // Close Modal Logic
+        document.getElementById('closeModal').addEventListener('click', () => {
+            document.getElementById('projectModal').style.display = 'none';
+        });
+
+        document.getElementById('projectModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('projectModal')) {
+                document.getElementById('projectModal').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
