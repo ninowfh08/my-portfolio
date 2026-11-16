@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AJM Operations Command Center — Multi-Brand Portfolio & Launch Readiness</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js for clean responsive visualizations -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <!-- Google Fonts: Inter & JetBrains Mono for crisp tabular numerals -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            slate: {
+              850: '#151e2e',
+              900: '#0f172a',
+              950: '#090d16',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Enforce tabular numerals across financial and operational metrics */
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    /* Custom scrollbar for dense enterprise tables */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #475569;
+    }
+    .row-selected {
+      background-color: rgba(56, 189, 248, 0.12) !important;
+      border-left: 3px solid #38bdf8;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-200 font-sans antialiased selection:bg-sky-500/30 selection:text-sky-200 min-h-screen flex flex-col">
+
+  <!-- TOP COMMAND BAR -->
+  <header class="sticky top-0 z-30 bg-slate-900/95 backdrop-blur border-b border-slate-800 px-4 py-3">
+    <div class="max-w-[1600px] mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+      <!-- Brand / Title -->
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-sky-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-sky-500/20 shrink-0">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-sm sm:text-base font-bold tracking-tight text-white">AJM Operations Command Center</h1>
+            <span class="hidden sm:inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-sky-500/10 text-sky-400 border border-sky-500/20">
+              COO EXECUTIVE BRIEF
+            </span>
+          </div>
+          <p class="text-xs text-slate-400">Multi-Brand Portfolio Performance, Launch Readiness &amp; Stack QA</p>
+        </div>
+      </div>
+
+      <!-- Global Filters & Export Action -->
+      <div class="flex flex-wrap items-center gap-2">
+        <!-- Brand Filter -->
+        <div class="flex items-center bg-slate-850 border border-slate-700/80 rounded-lg px-2.5 py-1.5">
+          <label for="brandFilter" class="text-[11px] font-semibold uppercase tracking-wider text-slate-400 mr-2">Portfolio:</label>
+          <select id="brandFilter" class="bg-transparent text-xs font-medium text-white focus:outline-none cursor-pointer">
+            <option value="ALL" class="bg-slate-900">All Brands (5 Active)</option>
+            <option value="Aura Botanics" class="bg-slate-900">Aura Botanics</option>
+            <option value="Lumina Home" class="bg-slate-900">Lumina Home</option>
+            <option value="Kinetix Gear" class="bg-slate-900">Kinetix Gear</option>
+            <option value="Nova Skincare" class="bg-slate-900">Nova Skincare</option>
+            <option value="Apex Supplements" class="bg-slate-900">Apex Supplements</option>
+          </select>
+        </div>
+
+        <!-- Date Range Filter -->
+        <div class="flex items-center bg-slate-850 border border-slate-700/80 rounded-lg px-2.5 py-1.5">
+          <label for="dateFilter" class="text-[11px] font-semibold uppercase tracking-wider text-slate-400 mr-2">Window:</label>
+          <select id="dateFilter" class="bg-transparent text-xs font-medium text-white focus:outline-none cursor-pointer">
+            <option value="7D" class="bg-slate-900">Last 7 Days</option>
+            <option value="30D" selected class="bg-slate-900">Last 30 Days</option>
+            <option value="Q4" class="bg-slate-900">Q4 MTD</option>
+          </select>
+        </div>
+
+        <!-- Copy COO Executive Summary Button -->
+        <button id="copyBriefBtn" type="button" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-lg px-3 py-1.5 text-xs font-medium transition cursor-pointer">
+          <svg class="w-3.5 h-3.5 text-sky-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+          </svg>
+          <span>Copy COO Brief</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- VIEW SWITCHER TABS -->
+    <div class="max-w-[1600px] mx-auto mt-3 pt-2 border-t border-slate-800/80 flex items-center gap-1 overflow-x-auto">
+      <button data-tab="tab-kpis" class="tab-btn active flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold transition whitespace-nowrap bg-sky-500/15 text-sky-300 border border-sky-500/30 cursor-pointer">
+        <span class="w-2 h-2 rounded-full bg-sky-400"></span>
+        1. Executive KPIs &amp; Portfolio Performance
+      </button>
+      <button data-tab="tab-launch" class="tab-btn flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold transition whitespace-nowrap text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 border border-transparent cursor-pointer">
+        <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+        2. Brand Launch &amp; Merchant Underwriting Tracker
+        <span id="launchAlertBadge" class="ml-1 px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 font-mono text-[10px]">2 HOLD/COND</span>
+      </button>
+      <button data-tab="tab-qa" class="tab-btn flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold transition whitespace-nowrap text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 border border-transparent cursor-pointer">
+        <span class="w-2 h-2 rounded-full bg-rose-400"></span>
+        3. Tech Stack QA &amp; Anomaly Root-Cause Log
+        <span id="qaCountBadge" class="ml-1 px-1.5 py-0.2 rounded bg-rose-500/20 text-rose-300 font-mono text-[10px]">5 OPEN</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- TOAST NOTIFICATION BANNER (Replaces alert) -->
+  <div id="toastBanner" class="fixed bottom-4 right-4 z-50 hidden transform transition-all duration-200">
+    <div class="bg-slate-800 border border-sky-500/40 text-slate-100 px-4 py-2.5 rounded-lg shadow-2xl flex items-center gap-2.5 text-xs font-medium">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span id="toastMessage">Action completed.</span>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="flex-1 max-w-[1600px] w-full mx-auto px-4 py-4 space-y-4">
+
+    <!-- =================================================================== -->
+    <!-- TAB 1: EXECUTIVE KPIS & PORTFOLIO PERFORMANCE                       -->
+    <!-- =================================================================== -->
+    <section id="tab-kpis" class="tab-panel space-y-4">
+      
+      <!-- 5 KPI SUMMARY CARDS -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3" id="kpiCardsContainer">
+        <!-- Populated dynamically via JS based on Brand & Date filters -->
+      </div>
+
+      <!-- CHARTS ROW -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+        <!-- Chart 1: Fulfillment Speed & Order Volume Trend -->
+        <div class="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-col">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <div>
+              <h2 class="text-xs font-bold uppercase tracking-wider text-slate-200">Fulfillment Velocity &amp; Order Volume Trend</h2>
+              <p class="text-[11px] text-slate-400">3PL Warehouse Pick-to-Carrier Hours vs. Daily Order Throughput (24h SLA Ceiling)</p>
+            </div>
+            <div class="flex items-center gap-3 text-[11px] font-mono">
+              <span class="flex items-center gap-1.5 text-sky-400"><span class="w-2.5 h-2.5 rounded-sm bg-sky-500/40 border border-sky-400"></span>Orders</span>
+              <span class="flex items-center gap-1.5 text-emerald-400"><span class="w-2.5 h-0.5 bg-emerald-400"></span>Avg Hrs</span>
+              <span class="flex items-center gap-1.5 text-rose-400"><span class="w-2.5 h-0.5 border-t border-dashed border-rose-400"></span>24h SLA</span>
+            </div>
+          </div>
+          <div class="relative flex-1 min-h-[230px]">
+            <canvas id="fulfillmentChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Chart 2: Return Rate & CS First-Response Benchmark -->
+        <div class="lg:col-span-5 bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-col">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <div>
+              <h2 class="text-xs font-bold uppercase tracking-wider text-slate-200">Brand Return Rate vs. Gorgias FRT Benchmark</h2>
+              <p class="text-[11px] text-slate-400">Cross-brand defect/return rate (%) &amp; ticket first-response (mins)</p>
+            </div>
+            <span class="text-[11px] font-mono text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded">Target: &lt;4.5% Ret / &lt;20m FRT</span>
+          </div>
+          <div class="relative flex-1 min-h-[230px]">
+            <canvas id="benchmarkChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTTOM SPLIT: BRAND BENCHMARK TABLE + COO RECOMMENDATIONS PANEL -->
+      <div class="grid grid-cols-1 xl:grid-cols-12 gap-4">
+        
+        <!-- Brand Benchmarking Data Table (8 cols) -->
+        <div class="xl:col-span-8 bg-slate-900 border border-slate-800 rounded-xl overflow-hidden flex flex-col">
+          <div class="px-4 py-3 border-b border-slate-800 flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <h2 class="text-xs font-bold uppercase tracking-wider text-slate-200">Multi-Brand Operational Benchmarking Matrix</h2>
+              <p class="text-[11px] text-slate-400">Click any brand row to inspect root-cause diagnostics &amp; COO action items</p>
+            </div>
+            <span id="selectedBrandHint" class="text-[11px] font-mono text-sky-400 bg-sky-500/10 border border-sky-500/20 px-2.5 py-1 rounded">
+              Viewing: Portfolio Aggregate
+            </span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-slate-950/60 border-b border-slate-800 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+                  <th class="py-2.5 px-3">Brand Entity</th>
+                  <th class="py-2.5 px-3 text-right">Active Orders</th>
+                  <th class="py-2.5 px-3 text-right">Fulfill SLA %</th>
+                  <th class="py-2.5 px-3 text-right">Order Acc %</th>
+                  <th class="py-2.5 px-3 text-right">Return Rate</th>
+                  <th class="py-2.5 px-3 text-right">Gorgias FRT</th>
+                  <th class="py-2.5 px-3 text-right">CC Auth %</th>
+                  <th class="py-2.5 px-3 text-center">Status Flag</th>
+                </tr>
+              </thead>
+              <tbody id="benchmarkTableBody" class="divide-y divide-slate-800/70 text-xs tabular-nums">
+                <!-- Populated dynamically via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- COO Actionable Recommendations Panel (4 cols) -->
+        <div class="xl:col-span-4 bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-col justify-between space-y-3">
+          <div>
+            <div class="flex items-center justify-between gap-2 pb-2.5 border-b border-slate-800">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-sky-400"></span>
+                <h2 class="text-xs font-bold uppercase tracking-wider text-white">COO Actionable Recommendations</h2>
+              </div>
+              <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-indigo-500/15 text-indigo-300 border border-indigo-500/30">Evidence-Backed</span>
+            </div>
+
+            <div id="cooRecommendationsList" class="mt-3 space-y-2.5">
+              <!-- Populated dynamically via JS -->
+            </div>
+          </div>
+
+          <!-- Analyst Sign-Off Footer -->
+          <div class="pt-2.5 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400">
+            <span>Prepared by: <strong class="text-slate-200">Operations Analyst</strong></span>
+            <span class="font-mono text-slate-500">Sync: Live Shopify/3PL</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- TAB 2: BRAND LAUNCH & MERCHANT UNDERWRITING TRACKER                 -->
+    <!-- =================================================================== -->
+    <section id="tab-launch" class="tab-panel hidden space-y-4">
+      
+      <!-- Top Summary Strip -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-3.5 flex items-center justify-between">
+          <div>
+            <p class="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Active Brand Launches</p>
+            <p class="text-xl font-bold text-white tabular-nums mt-0.5">3 Brands in Pipeline</p>
+            <p class="text-[11px] text-slate-400 mt-0.5">Target Q4 Go-Live Window</p>
+          </div>
+          <div class="px-2.5 py-1 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 font-mono text-xs font-semibold">
+            Avg Cycle: 11.5d
+          </div>
+        </div>
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-3.5 flex items-center justify-between">
+          <div>
+            <p class="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Underwriting Approval Rate</p>
+            <p class="text-xl font-bold text-emerald-400 tabular-nums mt-0.5">100% Zero-Rejection</p>
+            <p class="text-[11px] text-slate-400 mt-0.5">Stripe / NMI / CheckoutChamp MIDs</p>
+          </div>
+          <div class="px-2.5 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono text-xs font-semibold">
+            SOP v2.4 Active
+          </div>
+        </div>
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-3.5 flex items-center justify-between">
+          <div>
+            <p class="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Interactive Simulation</p>
+            <p class="text-xs text-slate-300 mt-1">Toggle checklist gates below to dynamically recalculate Readiness % &amp; COO Go/No-Go status.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- LAUNCH READINESS MATRIX -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
+        <div class="px-4 py-3 border-b border-slate-800 flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-200">Zero-to-One Brand Launch Readiness Matrix</h2>
+            <p class="text-[11px] text-slate-400">Interactive gate verification across Domain/DNS, Shopify Build, Merchant Underwriting, Pre-Launch QA &amp; SOP Sign-Off</p>
+          </div>
+          <div class="flex items-center gap-2 text-[11px] font-mono">
+            <span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">100% = GO</span>
+            <span class="px-2 py-0.5 rounded bg-amber-500/15 text-amber-300 border border-amber-500/30">80% = CONDITIONAL GO</span>
+            <span class="px-2 py-0.5 rounded bg-rose-500/15 text-rose-300 border border-rose-500/30">&lt;80% = HOLD</span>
+          </div>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-slate-950/60 border-b border-slate-800 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+                <th class="py-2.5 px-3">Launch ID</th>
+                <th class="py-2.5 px-3">Brand Entity</th>
+                <th class="py-2.5 px-3">Target Go-Live</th>
+                <th class="py-2.5 px-3 text-center">1. Domain &amp; DNS</th>
+                <th class="py-2.5 px-3 text-center">2. Shopify &amp; SKUs</th>
+                <th class="py-2.5 px-3 text-center">3. MID Underwriting</th>
+                <th class="py-2.5 px-3 text-center">4. Pre-Launch QA</th>
+                <th class="py-2.5 px-3 text-center">5. SOP Sign-Off</th>
+                <th class="py-2.5 px-3 text-right">Readiness</th>
+                <th class="py-2.5 px-3 text-center">COO Recommendation</th>
+              </tr>
+            </thead>
+            <tbody id="launchMatrixBody" class="divide-y divide-slate-800/70 text-xs tabular-nums">
+              <!-- Populated dynamically via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- MERCHANT UNDERWRITING & RISK LOG -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
+        <div class="px-4 py-3 border-b border-slate-800 flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-200">Merchant Account Underwriting &amp; Processor Risk Log</h2>
+            <p class="text-[11px] text-slate-400">Tracking MID underwriting stipulations, rolling reserve terms, descriptor compliance, and blocker owners</p>
+          </div>
+          <span class="text-[11px] font-mono text-slate-400">Processors: Stripe, NMI, CheckoutChamp</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-slate-950/60 border-b border-slate-800 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+                <th class="py-2.5 px-3">MID Case</th>
+                <th class="py-2.5 px-3">Brand</th>
+                <th class="py-2.5 px-3">Gateway / Processor</th>
+                <th class="py-2.5 px-3">Underwriting Stipulation / Compliance Check</th>
+                <th class="py-2.5 px-3">Reserve / Cap Terms</th>
+                <th class="py-2.5 px-3">Owner</th>
+                <th class="py-2.5 px-3 text-center">Status</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800/70 text-xs tabular-nums">
+              <tr class="hover:bg-slate-800/40">
+                <td class="py-2.5 px-3 font-mono text-slate-400">MID-104</td>
+                <td class="py-2.5 px-3 font-semibold text-white">Solis Wellness</td>
+                <td class="py-2.5 px-3 text-slate-300">CheckoutChamp + NMI</td>
+                <td class="py-2.5 px-3 text-slate-300">COA lab certificates, subscription billing disclosure &amp; refund policy footer verified</td>
+                <td class="py-2.5 px-3 font-mono text-emerald-400">0% Reserve / $150k Mo Cap</td>
+                <td class="py-2.5 px-3 text-slate-300">Ops Analyst</td>
+                <td class="py-2.5 px-3 text-center"><span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">APPROVED</span></td>
+              </tr>
+              <tr class="hover:bg-slate-800/40">
+                <td class="py-2.5 px-3 font-mono text-slate-400">MID-105</td>
+                <td class="py-2.5 px-3 font-semibold text-white">Veloce Coffee</td>
+                <td class="py-2.5 px-3 text-slate-300">Shopify Payments + Stripe</td>
+                <td class="py-2.5 px-3 text-slate-300">3PL fulfillment SLA proof &amp; recurring club cancellation flow screenshots submitted</td>
+                <td class="py-2.5 px-3 font-mono text-amber-400">5% Rolling (60d)</td>
+                <td class="py-2.5 px-3 text-slate-300">Ops Analyst / COO</td>
+                <td class="py-2.5 px-3 text-center"><span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-amber-500/15 text-amber-300 border border-amber-500/30">IN REVIEW</span></td>
+              </tr>
+              <tr class="hover:bg-slate-800/40">
+                <td class="py-2.5 px-3 font-mono text-slate-400">MID-106</td>
+                <td class="py-2.5 px-3 font-semibold text-white">Terra Pets</td>
+                <td class="py-2.5 px-3 text-slate-300">CheckoutChamp + Maverick</td>
+                <td class="py-2.5 px-3 text-slate-300">Awaiting supplier invoice verification &amp; customer service AirCall toll-free routing test</td>
+                <td class="py-2.5 px-3 font-mono text-rose-400">Pending Stipulations</td>
+                <td class="py-2.5 px-3 text-slate-300">Ops Analyst</td>
+                <td class="py-2.5 px-3 text-center"><span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-rose-500/15 text-rose-300 border border-rose-500/30">BLOCKER</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- TAB 3: TECH STACK QA & ANOMALY ROOT-CAUSE LOG                       -->
+    <!-- =================================================================== -->
+    <section id="tab-qa" class="tab-panel hidden space-y-4">
+      
+      <!-- AJM TECH STACK INTEGRATION HEALTH GRID -->
+      <div>
+        <div class="flex items-center justify-between mb-2">
+          <h2 class="text-xs font-bold uppercase tracking-wider text-slate-200">AJM Core Stack Integration Health (Live Telemetry)</h2>
+          <span class="text-[11px] font-mono text-slate-400">Monitored Stack: Shopify • Klaviyo • Gorgias • AirCall • CheckoutChamp</span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3" id="stackHealthGrid">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+
+      <!-- PRE-LAUNCH QA & OPERATIONAL ANOMALY LOG -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
+        <div class="px-4 py-3 border-b border-slate-800 flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-200">Pre-Launch QA &amp; Operational Anomaly Root-Cause Audit Trail</h2>
+            <p class="text-[11px] text-slate-400">Granular defect tracking, root-cause categorization, and permanent SOP updates (persisted in localStorage)</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button id="resetQaBtn" type="button" class="px-2.5 py-1.5 rounded-lg text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition cursor-pointer">
+              Reset Demo Log
+            </button>
+            <button id="toggleQaModalBtn" type="button" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-sky-600 hover:bg-sky-500 text-white shadow-lg shadow-sky-600/20 transition cursor-pointer">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+              <span>Log Anomaly / QA Issue</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- INLINE COLLAPSIBLE FORM TO ADD ANOMALY / QA ISSUE -->
+        <div id="qaFormContainer" class="hidden bg-slate-850 border-b border-slate-800 p-4">
+          <form id="qaIssueForm" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3 items-end">
+            <div>
+              <label class="block text-[11px] font-semibold uppercase text-slate-400 mb-1">Brand Entity</label>
+              <select id="qaBrandInput" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white focus:border-sky-500 focus:outline-none">
+                <option value="Aura Botanics">Aura Botanics</option>
+                <option value="Lumina Home">Lumina Home</option>
+                <option value="Kinetix Gear">Kinetix Gear</option>
+                <option value="Nova Skincare">Nova Skincare</option>
+                <option value="Apex Supplements">Apex Supplements</option>
+                <option value="Solis Wellness">Solis Wellness (Pre-Launch)</option>
+                <option value="Veloce Coffee">Veloce Coffee (Pre-Launch)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-[11px] font-semibold uppercase text-slate-400 mb-1">AJM Stack Component</label>
+              <select id="qaStackInput" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white focus:border-sky-500 focus:outline-none">
+                <option value="Shopify">Shopify</option>
+                <option value="CheckoutChamp">CheckoutChamp</option>
+                <option value="Klaviyo">Klaviyo</option>
+                <option value="Gorgias">Gorgias</option>
+                <option value="AirCall">AirCall</option>
+                <option value="3PL / Fulfillment">3PL / Fulfillment</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-[11px] font-semibold uppercase text-slate-400 mb-1">Root Cause Category</label>
+              <select id="qaCategoryInput" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white focus:border-sky-500 focus:outline-none">
+                <option value="Webhook / API Sync">Webhook / API Sync</option>
+                <option value="Checkout / Payment">Checkout / Payment</option>
+                <option value="Pixel / Attribution">Pixel / Attribution</option>
+                <option value="3PL SKU Mapping">3PL SKU Mapping</option>
+                <option value="CS Macro / Routing">CS Macro / Routing</option>
+              </select>
+            </div>
+            <div class="lg:col-span-2">
+              <label class="block text-[11px] font-semibold uppercase text-slate-400 mb-1">Issue Description</label>
+              <input id="qaDescInput" type="text" required placeholder="e.g., Upsell funnel post-purchase webhook delayed by 14m..." class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white placeholder-slate-500 focus:border-sky-500 focus:outline-none" />
+            </div>
+            <div>
+              <label class="block text-[11px] font-semibold uppercase text-slate-400 mb-1">Status</label>
+              <select id="qaStatusInput" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white focus:border-sky-500 focus:outline-none">
+                <option value="OPEN">OPEN</option>
+                <option value="IN QA">IN QA</option>
+                <option value="RESOLVED">RESOLVED</option>
+              </select>
+            </div>
+            <div class="sm:col-span-2 lg:col-span-5">
+              <label class="block text-[11px] font-semibold uppercase text-slate-400 mb-1">Operational Fix / SOP Update</label>
+              <input id="qaFixInput" type="text" required placeholder="e.g., Added retry queue check to Pre-Launch QA Checklist v2.5..." class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white placeholder-slate-500 focus:border-sky-500 focus:outline-none" />
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs py-1.5 px-3 rounded-lg transition cursor-pointer">
+                Save Record
+              </button>
+              <button type="button" id="cancelQaFormBtn" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs py-1.5 px-2.5 rounded-lg transition cursor-pointer">
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- QA LOG TABLE -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-slate-950/60 border-b border-slate-800 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+                <th class="py-2.5 px-3">ID</th>
+                <th class="py-2.5 px-3">Timestamp</th>
+                <th class="py-2.5 px-3">Brand</th>
+                <th class="py-2.5 px-3">Stack Component</th>
+                <th class="py-2.5 px-3">Issue Description</th>
+                <th class="py-2.5 px-3">Root Cause</th>
+                <th class="py-2.5 px-3">Operational Fix / SOP Update</th>
+                <th class="py-2.5 px-3 text-center">Status</th>
+              </tr>
+            </thead>
+            <tbody id="qaLogTableBody" class="divide-y divide-slate-800/70 text-xs tabular-nums">
+              <!-- Populated dynamically via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-800/80 bg-slate-900/50 py-2.5 px-4 text-[11px] text-slate-500">
+    <div class="max-w-[1600px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+      <span>AJ Media Operations Portfolio Artifact • Multi-Brand Execution &amp; COO Decision Support</span>
+      <span class="font-mono">Stack: Shopify • CheckoutChamp • Klaviyo • Gorgias • AirCall</span>
+    </div>
+  </footer>
+
+  <!-- APPLICATION LOGIC -->
+  <script>
+    // =========================================================================
+    // 1. STRUCTURED PORTFOLIO DATASET (Multi-Brand, Multi-Window)
+    // =========================================================================
+    const BRAND_DATA = {
+      "Aura Botanics": {
+        "7D":  { orders: 3420, fulfillHrs: 16.2, fulfillSla: 98.4, accuracy: 99.5, returnRate: 2.9, frtMins: 11, ccAuth: 96.4, launchDays: 10.5, status: "OPTIMAL", trendHrs: [17.1, 16.8, 16.5, 16.0, 15.8, 16.4, 16.2], trendOrders: [460, 485, 510, 490, 520, 475, 480] },
+        "30D": { orders: 14280, fulfillHrs: 16.8, fulfillSla: 98.1, accuracy: 99.4, returnRate: 3.1, frtMins: 12, ccAuth: 96.1, launchDays: 10.5, status: "OPTIMAL", trendHrs: [18.0, 17.4, 17.1, 16.5, 16.2, 16.8, 16.8], trendOrders: [1950, 2010, 2100, 2040, 2120, 2010, 2050] },
+        "Q4":  { orders: 29400, fulfillHrs: 17.1, fulfillSla: 97.9, accuracy: 99.3, returnRate: 3.2, frtMins: 13, ccAuth: 95.9, launchDays: 10.5, status: "OPTIMAL", trendHrs: [18.2, 17.8, 17.5, 17.0, 16.8, 16.9, 17.1], trendOrders: [3900, 4120, 4250, 4300, 4410, 4180, 4240] }
+      },
+      "Lumina Home": {
+        "7D":  { orders: 2150, fulfillHrs: 19.1, fulfillSla: 95.2, accuracy: 99.1, returnRate: 3.6, frtMins: 15, ccAuth: 94.8, launchDays: 12.0, status: "HEALTHY", trendHrs: [20.1, 19.8, 19.4, 19.0, 18.7, 19.2, 19.1], trendOrders: [290, 305, 310, 315, 320, 300, 310] },
+        "30D": { orders: 8940, fulfillHrs: 19.4, fulfillSla: 94.8, accuracy: 99.0, returnRate: 3.7, frtMins: 15, ccAuth: 94.6, launchDays: 12.0, status: "HEALTHY", trendHrs: [20.5, 20.1, 19.8, 19.2, 19.0, 19.3, 19.4], trendOrders: [1220, 1260, 1290, 1310, 1280, 1270, 1310] },
+        "Q4":  { orders: 18600, fulfillHrs: 19.8, fulfillSla: 94.2, accuracy: 98.9, returnRate: 3.9, frtMins: 16, ccAuth: 94.5, launchDays: 12.0, status: "HEALTHY", trendHrs: [21.0, 20.4, 20.0, 19.6, 19.5, 19.7, 19.8], trendOrders: [2500, 2610, 2700, 2680, 2740, 2650, 2720] }
+      },
+      "Kinetix Gear": {
+        "7D":  { orders: 2890, fulfillHrs: 22.8, fulfillSla: 89.4, accuracy: 98.5, returnRate: 5.8, frtMins: 22, ccAuth: 92.1, launchDays: 13.5, status: "ANOMALY", trendHrs: [21.2, 22.0, 23.1, 23.8, 23.4, 22.5, 22.8], trendOrders: [410, 420, 430, 415, 405, 400, 410] },
+        "30D": { orders: 11850, fulfillHrs: 22.1, fulfillSla: 90.6, accuracy: 98.7, returnRate: 5.4, frtMins: 21, ccAuth: 92.5, launchDays: 13.5, status: "ANOMALY", trendHrs: [20.4, 21.1, 21.9, 22.8, 23.2, 22.4, 22.1], trendOrders: [1650, 1690, 1720, 1700, 1710, 1680, 1700] },
+        "Q4":  { orders: 24100, fulfillHrs: 21.7, fulfillSla: 91.2, accuracy: 98.8, returnRate: 5.1, frtMins: 20, ccAuth: 92.8, launchDays: 13.5, status: "ANOMALY", trendHrs: [20.0, 20.8, 21.5, 22.2, 22.6, 22.0, 21.7], trendOrders: [3300, 3420, 3490, 3450, 3510, 3440, 3490] }
+      },
+      "Nova Skincare": {
+        "7D":  { orders: 3110, fulfillHrs: 15.4, fulfillSla: 99.1, accuracy: 99.6, returnRate: 2.6, frtMins: 10, ccAuth: 97.1, launchDays: 9.5, status: "OPTIMAL", trendHrs: [16.0, 15.8, 15.5, 15.2, 15.1, 15.5, 15.4], trendOrders: [430, 445, 450, 440, 460, 435, 450] },
+        "30D": { orders: 13100, fulfillHrs: 15.9, fulfillSla: 98.8, accuracy: 99.5, returnRate: 2.8, frtMins: 11, ccAuth: 96.9, launchDays: 9.5, status: "OPTIMAL", trendHrs: [16.5, 16.2, 16.0, 15.8, 15.6, 15.8, 15.9], trendOrders: [1810, 1850, 1890, 1870, 1920, 1860, 1900] },
+        "Q4":  { orders: 27300, fulfillHrs: 16.1, fulfillSla: 98.6, accuracy: 99.4, returnRate: 2.9, frtMins: 11, ccAuth: 96.8, launchDays: 9.5, status: "OPTIMAL", trendHrs: [16.8, 16.4, 16.2, 16.0, 15.9, 16.0, 16.1], trendOrders: [3750, 3880, 3920, 3900, 3980, 3910, 3960] }
+      },
+      "Apex Supplements": {
+        "7D":  { orders: 2640, fulfillHrs: 17.9, fulfillSla: 96.8, accuracy: 99.3, returnRate: 3.9, frtMins: 13, ccAuth: 94.2, launchDays: 12.0, status: "WATCH", trendHrs: [18.4, 18.1, 17.9, 17.7, 17.6, 18.0, 17.9], trendOrders: [365, 375, 380, 385, 390, 370, 375] },
+        "30D": { orders: 10920, fulfillHrs: 18.0, fulfillSla: 96.5, accuracy: 99.2, returnRate: 4.1, frtMins: 14, ccAuth: 93.9, launchDays: 12.0, status: "WATCH", trendHrs: [18.8, 18.5, 18.2, 17.9, 17.8, 18.1, 18.0], trendOrders: [1510, 1540, 1570, 1560, 1590, 1560, 1590] },
+        "Q4":  { orders: 22450, fulfillHrs: 18.2, fulfillSla: 96.2, accuracy: 99.1, returnRate: 4.2, frtMins: 14, ccAuth: 93.8, launchDays: 12.0, status: "WATCH", trendHrs: [19.0, 18.6, 18.4, 18.1, 18.0, 18.2, 18.2], trendOrders: [3100, 3180, 3220, 3200, 3260, 3210, 3280] }
+      }
+    };
+
+    const COO_RECOMMENDATIONS = {
+      "ALL": [
+        {
+          priority: "HIGH PRIORITY",
+          badgeClass: "bg-rose-500/15 text-rose-300 border-rose-500/30",
+          title: "Kinetix Gear: Return Rate Spike (5.4% vs 4.5% Cap)",
+          finding: "68% of Kinetix returns stem from SKU #KX-402 sizing variance and 3PL West Coast cut-off misses (22.1h avg).",
+          action: "Update Shopify PDP size chart modal, enforce 2:00 PM PST 3PL carrier manifest SLA, and add Gorgias size-exchange macro."
+        },
+        {
+          priority: "OPTIMIZATION",
+          badgeClass: "bg-amber-500/15 text-amber-300 border-amber-500/30",
+          title: "Apex Supplements: CheckoutChamp Auth Rate (93.9%)",
+          finding: "Subscription re-bill soft declines rose +1.4% on secondary NMI MID during peak morning batch.",
+          action: "Enable CheckoutChamp smart cascade retry logic (24h/72h intervals) to recover ~$14.2k/mo in rebills."
+        },
+        {
+          priority: "BENCHMARK WIN",
+          badgeClass: "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
+          title: "Replicate Nova Skincare Pre-Launch QA SOP (9.5d Cycle)",
+          finding: "Nova achieved 99.5% order accuracy and 11m Gorgias FRT via automated Klaviyo/Gorgias tag routing.",
+          action: "Standardize Nova's webhook & tagging template across Solis Wellness and Veloce Coffee launches."
+        }
+      ],
+      "Kinetix Gear": [
+        {
+          priority: "CRITICAL ANOMALY",
+          badgeClass: "bg-rose-500/15 text-rose-300 border-rose-500/30",
+          title: "SKU #KX-402 Sizing Defect & 3PL Manifest Bottleneck",
+          finding: "Return rate hit 5.4% (+0.9% above threshold); Gorgias FRT degraded to 21m due to WISMO & sizing tickets.",
+          action: "Deploy mandatory fit-guide accordion above Add-to-Cart and shift 30% buffer stock to East Coast 3PL."
+        }
+      ],
+      "Aura Botanics": [
+        {
+          priority: "SCALE READY",
+          badgeClass: "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
+          title: "Top Portfolio Performer — 98.1% SLA & 3.1% Returns",
+          finding: "CheckoutChamp auth rate holds at 96.1% with zero merchant underwriting flags.",
+          action: "Greenlight Q4 paid media scaling (+25% spend cap) with current 3PL safety stock levels."
+        }
+      ],
+      "Lumina Home": [
+        {
+          priority: "STABLE",
+          badgeClass: "bg-sky-500/15 text-sky-300 border-sky-500/30",
+          title: "Fragile Packaging SOP Reduced Transit Damage by 18%",
+          finding: "Double-wall carton SOP update lowered return rate from 4.4% to 3.7% over 30 days.",
+          action: "Lock vendor packaging spec into quarterly 3PL receiving audit checklist."
+        }
+      ],
+      "Nova Skincare": [
+        {
+          priority: "GOLD STANDARD",
+          badgeClass: "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
+          title: "Fastest Launch Cycle (9.5d) & Lowest Return Rate (2.8%)",
+          finding: "Automated Gorgias + AirCall VIP routing keeps first-response at 11 mins.",
+          action: "Use Nova Skincare stack configuration as AJM baseline blueprint for Q4 launches."
+        }
+      ],
+      "Apex Supplements": [
+        {
+          priority: "WATCHLIST",
+          badgeClass: "bg-amber-500/15 text-amber-300 border-amber-500/30",
+          title: "Subscription Rebill Decline & Return Threshold Watch (4.1%)",
+          finding: "First-time bundle buyers cite flavor expectation mismatch; CC auth rate dipped to 93.9%.",
+          action: "Trigger Klaviyo post-purchase education flow at Day +2 and activate CheckoutChamp decline recovery."
+        }
+      ]
+    };
+
+    // Launch Readiness State
+    let LAUNCH_PIPELINE = [
+      {
+        id: "LCH-01",
+        brand: "Solis Wellness",
+        targetDate: "Nov 22, 2026",
+        gates: { dns: true, shopify: true, mid: true, qa: true, sop: true }
+      },
+      {
+        id: "LCH-02",
+        brand: "Veloce Coffee",
+        targetDate: "Nov 29, 2026",
+        gates: { dns: true, shopify: true, mid: true, qa: true, sop: false }
+      },
+      {
+        id: "LCH-03",
+        brand: "Terra Pets",
+        targetDate: "Dec 06, 2026",
+        gates: { dns: true, shopify: true, mid: false, qa: false, sop: false }
+      }
+    ];
+
+    // Tech Stack Telemetry Data
+    const STACK_HEALTH = [
+      { name: "Shopify Plus", role: "Storefront & Order Core", status: "OPERATIONAL", latency: "142ms", sync: "99.98%", audit: "12m ago", color: "emerald" },
+      { name: "CheckoutChamp", role: "Funnel & MID Routing", status: "OPERATIONAL", latency: "188ms", sync: "99.92%", audit: "18m ago", color: "emerald" },
+      { name: "Klaviyo", role: "Lifecycle & Post-Purchase", status: "DEGRADED SYNC", latency: "610ms", sync: "98.40%", audit: "4m ago", color: "amber" },
+      { name: "Gorgias", role: "Omnichannel CS Desk", status: "OPERATIONAL", latency: "165ms", sync: "99.95%", audit: "9m ago", color: "emerald" },
+      { name: "AirCall", role: "Voice & VIP Escalation", status: "OPERATIONAL", latency: "110ms", sync: "100.0%", audit: "15m ago", color: "emerald" }
+    ];
+
+    // Default QA & Anomaly Audit Log
+    const DEFAULT_QA_LOGS = [
+      {
+        id: "QA-1041",
+        timestamp: "2026-11-14 09:15",
+        brand: "Kinetix Gear",
+        stack: "3PL / Fulfillment",
+        desc: "West Coast 3PL carrier scan delayed >24h on 112 orders due to batch CSV format mismatch",
+        category: "3PL SKU Mapping",
+        fix: "Patched Shopify-to-3PL SKU weight/dimension mapping & added 2PM daily manifest audit to Ops SOP",
+        status: "OPEN"
+      },
+      {
+        id: "QA-1042",
+        timestamp: "2026-11-14 08:40",
+        brand: "Veloce Coffee",
+        stack: "CheckoutChamp",
+        desc: "Pre-launch QA: Post-purchase 1-click upsell tax calculation rounded $0.02 off Shopify order total",
+        category: "Checkout / Payment",
+        fix: "Aligned CheckoutChamp tax engine rules with Shopify Avalara settings; re-verified 10 test orders",
+        status: "IN QA"
+      },
+      {
+        id: "QA-1043",
+        timestamp: "2026-11-13 17:22",
+        brand: "Apex Supplements",
+        stack: "Klaviyo",
+        desc: "Subscription renewal reminder flow webhook lagged 18 mins during peak batch sync",
+        category: "Webhook / API Sync",
+        fix: "Throttled bulk webhook burst rate and added Klaviyo queue latency check to morning ops checklist",
+        status: "OPEN"
+      },
+      {
+        id: "QA-1044",
+        timestamp: "2026-11-13 14:05",
+        brand: "Terra Pets",
+        stack: "AirCall",
+        desc: "Pre-launch QA: Toll-free support line IVR failed to route VIP callers to Gorgias priority queue",
+        category: "CS Macro / Routing",
+        fix: "Re-mapped AirCall webhook tag 'VIP-Tier' to Gorgias auto-assignment rule; tested live call",
+        status: "RESOLVED"
+      },
+      {
+        id: "QA-1045",
+        timestamp: "2026-11-12 16:50",
+        brand: "Solis Wellness",
+        stack: "Shopify",
+        desc: "Pre-launch QA: Meta CAPI & GA4 purchase pixel double-firing on Safari mobile thank-you page",
+        category: "Pixel / Attribution",
+        fix: "Added event_id deduplication parameter in CheckoutChamp script header; validated via Meta Events Manager",
+        status: "RESOLVED"
+      }
+    ];
+
+    // =========================================================================
+    // 2. STATE MANAGEMENT & LOCALSTORAGE PERSISTENCE
+    // =========================================================================
+    let currentBrand = "ALL";
+    let currentDate = "30D";
+    let highlightedBrand = null;
+    let fulfillmentChartInstance = null;
+    let benchmarkChartInstance = null;
+
+    let qaLogs = [];
+    try {
+      const saved = localStorage.getItem("ajm_ops_qa_logs_v1");
+      qaLogs = saved ? JSON.parse(saved) : [...DEFAULT_QA_LOGS];
+    } catch (e) {
+      qaLogs = [...DEFAULT_QA_LOGS];
+    }
+
+    function saveQaLogs() {
+      try {
+        localStorage.setItem("ajm_ops_qa_logs_v1", JSON.stringify(qaLogs));
+      } catch (e) {
+        console.warn("LocalStorage unavailable", e);
+      }
+    }
+
+    // =========================================================================
+    // 3. HELPER UTILITIES
+    // =========================================================================
+    function showToast(msg) {
+      const banner = document.getElementById("toastBanner");
+      const text = document.getElementById("toastMessage");
+      text.textContent = msg;
+      banner.classList.remove("hidden");
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => {
+        banner.classList.add("hidden");
+      }, 3200);
+    }
+
+    function getAggregatedMetrics(brandFilter, dateFilter) {
+      const brandNames = Object.keys(BRAND_DATA);
+      if (brandFilter !== "ALL") {
+        return { ...BRAND_DATA[brandFilter][dateFilter], brandCount: 1 };
+      }
+      // Weighted / mean aggregation across all 5 brands
+      let totalOrders = 0;
+      let sumFulfillHrs = 0;
+      let sumFulfillSla = 0;
+      let sumAccuracy = 0;
+      let sumReturn = 0;
+      let sumFrt = 0;
+      let sumCcAuth = 0;
+      let sumLaunch = 0;
+      let trendHrs = [0, 0, 0, 0, 0, 0, 0];
+      let trendOrders = [0, 0, 0, 0, 0, 0, 0];
+
+      brandNames.forEach(b => {
+        const d = BRAND_DATA[b][dateFilter];
+        totalOrders += d.orders;
+        sumFulfillHrs += d.fulfillHrs;
+        sumFulfillSla += d.fulfillSla;
+        sumAccuracy += d.accuracy;
+        sumReturn += d.returnRate;
+        sumFrt += d.frtMins;
+        sumCcAuth += d.ccAuth;
+        sumLaunch += d.launchDays;
+        for (let i = 0; i < 7; i++) {
+          trendHrs[i] += d.trendHrs[i];
+          trendOrders[i] += d.trendOrders[i];
+        }
+      });
+
+      const n = brandNames.length;
+      return {
+        orders: totalOrders,
+        fulfillHrs: +(sumFulfillHrs / n).toFixed(1),
+        fulfillSla: +(sumFulfillSla / n).toFixed(1),
+        accuracy: +(sumAccuracy / n).toFixed(2),
+        returnRate: +(sumReturn / n).toFixed(1),
+        frtMins: Math.round(sumFrt / n),
+        ccAuth: +(sumCcAuth / n).toFixed(1),
+        launchDays: +(sumLaunch / n).toFixed(1),
+        trendHrs: trendHrs.map(v => +(v / n).toFixed(1)),
+        trendOrders: trendOrders,
+        brandCount: n
+      };
+    }
+
+    // =========================================================================
+    // 4. RENDER TAB 1: KPI CARDS, CHARTS, BENCHMARK TABLE & COO PANEL
+    // =========================================================================
+    function renderKpiCards() {
+      const m = getAggregatedMetrics(currentBrand, currentDate);
+      const container = document.getElementById("kpiCardsContainer");
+
+      const cards = [
+        {
+          label: "Avg Fulfillment Speed",
+          value: `${m.fulfillHrs} hrs`,
+          target: "SLA < 24.0 hrs",
+          delta: `${(24 - m.fulfillHrs).toFixed(1)}h buffer`,
+          good: m.fulfillHrs <= 20.0,
+          sub: `${m.fulfillSla}% within 24h SLA`
+        },
+        {
+          label: "Order Accuracy Rate",
+          value: `${m.accuracy}%`,
+          target: "Target ≥ 99.0%",
+          delta: `${m.accuracy >= 99.0 ? "+" : ""}${(m.accuracy - 99.0).toFixed(2)}% vs SLA`,
+          good: m.accuracy >= 99.0,
+          sub: `${m.orders.toLocaleString()} total orders`
+        },
+        {
+          label: "Portfolio Return Rate",
+          value: `${m.returnRate}%`,
+          target: "Cap < 4.5%",
+          delta: m.returnRate <= 4.5 ? `-${(4.5 - m.returnRate).toFixed(1)}% under cap` : `+${(m.returnRate - 4.5).toFixed(1)}% OVER CAP`,
+          good: m.returnRate <= 4.5,
+          sub: "Defect & sizing weighted"
+        },
+        {
+          label: "CS First-Response Time",
+          value: `${m.frtMins} mins`,
+          target: "SLA < 20 mins",
+          delta: m.frtMins <= 20 ? `-${20 - m.frtMins}m faster` : `+${m.frtMins - 20}m breach`,
+          good: m.frtMins <= 20,
+          sub: "Gorgias + AirCall Blended"
+        },
+        {
+          label: "Avg Launch Cycle Time",
+          value: `${m.launchDays} days`,
+          target: "Target ≤ 14.0d",
+          delta: `-${(14.0 - m.launchDays).toFixed(1)}d ahead`,
+          good: m.launchDays <= 14.0,
+          sub: "Zero-to-Live SOP Benchmark"
+        }
+      ];
+
+      container.innerHTML = cards.map(c => `
+        <div class="bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-xl p-3.5 transition">
+          <div class="flex items-center justify-between gap-2">
+            <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-400">${c.label}</span>
+            <span class="px-1.5 py-0.5 rounded text-[10px] font-mono font-semibold ${c.good ? 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30' : 'bg-rose-500/15 text-rose-300 border border-rose-500/30'}">
+              ${c.delta}
+            </span>
+          </div>
+          <div class="mt-2 flex items-baseline justify-between">
+            <span class="text-2xl font-bold text-white tabular-nums tracking-tight">${c.value}</span>
+            <span class="text-[11px] font-mono text-slate-400">${c.target}</span>
+          </div>
+          <div class="mt-1.5 pt-1.5 border-t border-slate-800/70 text-[11px] text-slate-400 flex items-center justify-between">
+            <span>${c.sub}</span>
+            <span class="w-1.5 h-1.5 rounded-full ${c.good ? 'bg-emerald-400' : 'bg-rose-400'}"></span>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function renderCharts() {
+      const m = getAggregatedMetrics(currentBrand, currentDate);
+      const labels = currentDate === "7D"
+        ? ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+        : currentDate === "30D"
+          ? ["Wk 1", "Wk 2", "Wk 3", "Wk 4", "Wk 5", "Wk 6", "Current"]
+          : ["Oct W1", "Oct W2", "Oct W3", "Oct W4", "Nov W1", "Nov W2", "MTD"];
+
+      // 1. Fulfillment Velocity & Volume Chart
+      const ctx1 = document.getElementById("fulfillmentChart").getContext("2d");
+      if (fulfillmentChartInstance) fulfillmentChartInstance.destroy();
+
+      fulfillmentChartInstance = new Chart(ctx1, {
+        type: "bar",
+        data: {
+          labels,
+          datasets: [
+            {
+              type: "line",
+              label: "Avg Fulfillment (Hrs)",
+              data: m.trendHrs,
+              borderColor: "#34d399",
+              backgroundColor: "#34d399",
+              borderWidth: 2.5,
+              tension: 0.3,
+              pointRadius: 3,
+              yAxisID: "yHrs"
+            },
+            {
+              type: "line",
+              label: "24h SLA Ceiling",
+              data: [24, 24, 24, 24, 24, 24, 24],
+              borderColor: "#fb7185",
+              borderWidth: 1.5,
+              borderDash: [5, 5],
+              pointRadius: 0,
+              yAxisID: "yHrs"
+            },
+            {
+              type: "bar",
+              label: "Order Volume",
+              data: m.trendOrders,
+              backgroundColor: "rgba(56, 189, 248, 0.25)",
+              borderColor: "rgba(56, 189, 248, 0.6)",
+              borderWidth: 1,
+              borderRadius: 4,
+              yAxisID: "yOrders"
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: "index", intersect: false },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: "#0f172a",
+              borderColor: "#334155",
+              borderWidth: 1,
+              titleColor: "#f8fafc",
+              bodyColor: "#cbd5e1"
+            }
+          },
+          scales: {
+            x: {
+              grid: { color: "rgba(51, 65, 85, 0.3)" },
+              ticks: { color: "#94a3b8", font: { size: 11, family: "JetBrains Mono" } }
+            },
+            yHrs: {
+              type: "linear",
+              position: "left",
+              min: 10,
+              max: 28,
+              grid: { color: "rgba(51, 65, 85, 0.3)" },
+              ticks: { color: "#34d399", font: { size: 11, family: "JetBrains Mono" }, callback: v => v + "h" }
+            },
+            yOrders: {
+              type: "linear",
+              position: "right",
+              grid: { drawOnChartArea: false },
+              ticks: { color: "#38bdf8", font: { size: 11, family: "JetBrains Mono" } }
+            }
+          }
+        }
+      });
+
+      // 2. Return Rate vs Gorgias FRT Benchmark by Brand
+      const brands = Object.keys(BRAND_DATA);
+      const returnRates = brands.map(b => BRAND_DATA[b][currentDate].returnRate);
+      const frtValues = brands.map(b => BRAND_DATA[b][currentDate].frtMins);
+
+      const ctx2 = document.getElementById("benchmarkChart").getContext("2d");
+      if (benchmarkChartInstance) benchmarkChartInstance.destroy();
+
+      benchmarkChartInstance = new Chart(ctx2, {
+        type: "bar",
+        data: {
+          labels: brands.map(b => b.split(" ")[0]),
+          datasets: [
+            {
+              label: "Return Rate (%)",
+              data: returnRates,
+              backgroundColor: returnRates.map(r => r > 4.5 ? "rgba(251, 113, 133, 0.75)" : "rgba(56, 189, 248, 0.75)"),
+              borderRadius: 4,
+              yAxisID: "yRet"
+            },
+            {
+              label: "Gorgias FRT (Mins)",
+              data: frtValues,
+              backgroundColor: "rgba(251, 191, 36, 0.75)",
+              borderRadius: 4,
+              yAxisID: "yFrt"
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: "index", intersect: false },
+          plugins: {
+            legend: {
+              labels: { color: "#cbd5e1", font: { size: 11 } }
+            },
+            tooltip: {
+              backgroundColor: "#0f172a",
+              borderColor: "#334155",
+              borderWidth: 1
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: "#94a3b8", font: { size: 11 } }
+            },
+            yRet: {
+              type: "linear",
+              position: "left",
+              min: 0,
+              max: 8,
+              grid: { color: "rgba(51, 65, 85, 0.3)" },
+              ticks: { color: "#38bdf8", font: { size: 11, family: "JetBrains Mono" }, callback: v => v + "%" }
+            },
+            yFrt: {
+              type: "linear",
+              position: "right",
+              min: 0,
+              max: 30,
+              grid: { drawOnChartArea: false },
+              ticks: { color: "#fbbf24", font: { size: 11, family: "JetBrains Mono" }, callback: v => v + "m" }
+            }
+          }
+        }
+      });
+    }
+
+    function renderBenchmarkTable() {
+      const tbody = document.getElementById("benchmarkTableBody");
+      const brands = currentBrand === "ALL" ? Object.keys(BRAND_DATA) : [currentBrand];
+
+      tbody.innerHTML = brands.map(brand => {
+        const d = BRAND_DATA[brand][currentDate];
+        const isSelected = highlightedBrand === brand;
+        const statusBadge = d.status === "OPTIMAL"
+          ? `<span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">OPTIMAL</span>`
+          : d.status === "HEALTHY"
+            ? `<span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-sky-500/15 text-sky-300 border border-sky-500/30">HEALTHY</span>`
+            : d.status === "WATCH"
+              ? `<span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-amber-500/15 text-amber-300 border border-amber-500/30">WATCH</span>`
+              : `<span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-rose-500/15 text-rose-300 border border-rose-500/30">ANOMALY</span>`;
+
+        return `
+          <tr data-brand-row="${brand}" class="cursor-pointer hover:bg-slate-800/50 transition ${isSelected ? 'row-selected' : ''}">
+            <td class="py-2.5 px-3 font-semibold text-white flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full ${d.status === 'ANOMALY' ? 'bg-rose-400 animate-pulse' : d.status === 'WATCH' ? 'bg-amber-400' : 'bg-emerald-400'}"></span>
+              ${brand}
+            </td>
+            <td class="py-2.5 px-3 text-right text-slate-300">${d.orders.toLocaleString()}</td>
+            <td class="py-2.5 px-3 text-right ${d.fulfillSla < 94 ? 'text-rose-400 font-semibold' : 'text-slate-200'}">${d.fulfillSla}%</td>
+            <td class="py-2.5 px-3 text-right ${d.accuracy < 99.0 ? 'text-amber-400 font-semibold' : 'text-emerald-400'}">${d.accuracy}%</td>
+            <td class="py-2.5 px-3 text-right ${d.returnRate > 4.5 ? 'text-rose-400 font-bold' : 'text-slate-200'}">${d.returnRate}%</td>
+            <td class="py-2.5 px-3 text-right ${d.frtMins > 20 ? 'text-rose-400 font-semibold' : 'text-slate-200'}">${d.frtMins}m</td>
+            <td class="py-2.5 px-3 text-right ${d.ccAuth < 93.5 ? 'text-amber-400 font-semibold' : 'text-slate-200'}">${d.ccAuth}%</td>
+            <td class="py-2.5 px-3 text-center">${statusBadge}</td>
+          </tr>
+        `;
+      }).join("");
+
+      // Row click handler to inspect brand-specific COO recommendations
+      document.querySelectorAll("[data-brand-row]").forEach(row => {
+        row.addEventListener("click", () => {
+          const clickedBrand = row.getAttribute("data-brand-row");
+          highlightedBrand = (highlightedBrand === clickedBrand) ? null : clickedBrand;
+          renderBenchmarkTable();
+          renderCooRecommendations();
+        });
+      });
+    }
+
+    function renderCooRecommendations() {
+      const targetKey = highlightedBrand || (currentBrand !== "ALL" ? currentBrand : "ALL");
+      const hint = document.getElementById("selectedBrandHint");
+      hint.textContent = targetKey === "ALL" ? "Viewing: Portfolio Aggregate" : `Focused: ${targetKey}`;
+
+      const recs = COO_RECOMMENDATIONS[targetKey] || COO_RECOMMENDATIONS["ALL"];
+      const container = document.getElementById("cooRecommendationsList");
+
+      container.innerHTML = recs.map(r => `
+        <div class="bg-slate-950/70 border border-slate-800 rounded-lg p-3 space-y-1.5">
+          <div class="flex items-center justify-between gap-2">
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold border ${r.badgeClass}">${r.priority}</span>
+          </div>
+          <h3 class="text-xs font-bold text-white leading-snug">${r.title}</h3>
+          <p class="text-[11px] text-slate-400 leading-relaxed"><strong class="text-slate-300">Root Cause:</strong> ${r.finding}</p>
+          <p class="text-[11px] text-sky-300 leading-relaxed"><strong class="text-sky-400">COO Recommendation:</strong> ${r.action}</p>
+        </div>
+      `).join("");
+    }
+
+    // =========================================================================
+    // 5. RENDER TAB 2: LAUNCH READINESS MATRIX
+    // =========================================================================
+    function renderLaunchMatrix() {
+      const tbody = document.getElementById("launchMatrixBody");
+      let holdOrCondCount = 0;
+
+      tbody.innerHTML = LAUNCH_PIPELINE.map((item, idx) => {
+        const gates = item.gates;
+        const completed = Object.values(gates).filter(Boolean).length;
+        const score = Math.round((completed / 5) * 100);
+        if (score < 100) holdOrCondCount++;
+
+        let badgeHtml = "";
+        if (score === 100) {
+          badgeHtml = `<span class="px-2.5 py-1 rounded text-[11px] font-mono font-bold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">GO FOR LAUNCH</span>`;
+        } else if (score >= 80) {
+          badgeHtml = `<span class="px-2.5 py-1 rounded text-[11px] font-mono font-bold bg-amber-500/15 text-amber-300 border border-amber-500/30">CONDITIONAL GO</span>`;
+        } else {
+          badgeHtml = `<span class="px-2.5 py-1 rounded text-[11px] font-mono font-bold bg-rose-500/15 text-rose-300 border border-rose-500/30">HOLD / BLOCKER</span>`;
+        }
+
+        const gateKeys = ["dns", "shopify", "mid", "qa", "sop"];
+        const checkboxesHtml = gateKeys.map(k => `
+          <td class="py-2.5 px-3 text-center">
+            <input type="checkbox" data-launch-idx="${idx}" data-gate="${k}" ${gates[k] ? "checked" : ""}
+              class="w-4 h-4 rounded border-slate-600 bg-slate-800 text-sky-500 focus:ring-sky-500 focus:ring-offset-slate-900 cursor-pointer" />
+          </td>
+        `).join("");
+
+        return `
+          <tr class="hover:bg-slate-800/40 transition">
+            <td class="py-2.5 px-3 font-mono text-slate-400">${item.id}</td>
+            <td class="py-2.5 px-3 font-bold text-white">${item.brand}</td>
+            <td class="py-2.5 px-3 font-mono text-slate-300">${item.targetDate}</td>
+            ${checkboxesHtml}
+            <td class="py-2.5 px-3 text-right font-mono font-bold ${score === 100 ? 'text-emerald-400' : score >= 80 ? 'text-amber-400' : 'text-rose-400'}">
+              ${score}%
+            </td>
+            <td class="py-2.5 px-3 text-center">${badgeHtml}</td>
+          </tr>
+        `;
+      }).join("");
+
+      document.getElementById("launchAlertBadge").textContent = `${holdOrCondCount} HOLD/COND`;
+
+      // Attach checkbox listeners
+      document.querySelectorAll("[data-launch-idx]").forEach(cb => {
+        cb.addEventListener("change", (e) => {
+          const idx = parseInt(e.target.getAttribute("data-launch-idx"), 10);
+          const gate = e.target.getAttribute("data-gate");
+          LAUNCH_PIPELINE[idx].gates[gate] = e.target.checked;
+          renderLaunchMatrix();
+          showToast(`Updated ${LAUNCH_PIPELINE[idx].brand} launch readiness gate.`);
+        });
+      });
+    }
+
+    // =========================================================================
+    // 6. RENDER TAB 3: TECH STACK HEALTH & QA ANOMALY LOG
+    // =========================================================================
+    function renderStackHealth() {
+      const grid = document.getElementById("stackHealthGrid");
+      grid.innerHTML = STACK_HEALTH.map(s => {
+        const isWarn = s.color === "amber";
+        return `
+          <div class="bg-slate-900 border ${isWarn ? 'border-amber-500/40' : 'border-slate-800'} rounded-xl p-3 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-white">${s.name}</span>
+              <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-mono font-semibold ${isWarn ? 'bg-amber-500/15 text-amber-300' : 'bg-emerald-500/15 text-emerald-300'}">
+                <span class="w-1.5 h-1.5 rounded-full ${isWarn ? 'bg-amber-400 animate-pulse' : 'bg-emerald-400'}"></span>
+                ${s.status}
+              </span>
+            </div>
+            <p class="text-[11px] text-slate-400">${s.role}</p>
+            <div class="pt-1.5 border-t border-slate-800/80 grid grid-cols-3 gap-1 text-[11px] font-mono">
+              <div>
+                <span class="block text-[9px] text-slate-500 uppercase">Latency</span>
+                <span class="${isWarn ? 'text-amber-300' : 'text-slate-200'}">${s.latency}</span>
+              </div>
+              <div>
+                <span class="block text-[9px] text-slate-500 uppercase">Sync %</span>
+                <span class="text-slate-200">${s.sync}</span>
+              </div>
+              <div class="text-right">
+                <span class="block text-[9px] text-slate-500 uppercase">Audit</span>
+                <span class="text-slate-400">${s.audit}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderQaLogs() {
+      const tbody = document.getElementById("qaLogTableBody");
+      const openCount = qaLogs.filter(l => l.status !== "RESOLVED").length;
+      document.getElementById("qaCountBadge").textContent = `${openCount} OPEN`;
+
+      tbody.innerHTML = qaLogs.map((log, index) => {
+        const badgeClass = log.status === "RESOLVED"
+          ? "bg-emerald-500/15 text-emerald-300 border-emerald-500/30"
+          : log.status === "IN QA"
+            ? "bg-amber-500/15 text-amber-300 border-amber-500/30"
+            : "bg-rose-500/15 text-rose-300 border-rose-500/30";
+
+        return `
+          <tr class="hover:bg-slate-800/40 transition">
+            <td class="py-2.5 px-3 font-mono font-semibold text-sky-400 whitespace-nowrap">${log.id}</td>
+            <td class="py-2.5 px-3 font-mono text-slate-400 whitespace-nowrap">${log.timestamp}</td>
+            <td class="py-2.5 px-3 font-semibold text-white whitespace-nowrap">${log.brand}</td>
+            <td class="py-2.5 px-3 whitespace-nowrap">
+              <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-200 font-mono text-[11px]">${log.stack}</span>
+            </td>
+            <td class="py-2.5 px-3 text-slate-300 max-w-xs">${log.desc}</td>
+            <td class="py-2.5 px-3 text-slate-400 whitespace-nowrap">${log.category}</td>
+            <td class="py-2.5 px-3 text-slate-300 max-w-xs">${log.fix}</td>
+            <td class="py-2.5 px-3 text-center whitespace-nowrap">
+              <button data-cycle-qa="${index}" title="Click to cycle status" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold border ${badgeClass} cursor-pointer hover:opacity-80 transition">
+                ${log.status}
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join("");
+
+      // Allow clicking status pill to cycle OPEN -> IN QA -> RESOLVED
+      document.querySelectorAll("[data-cycle-qa]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const idx = parseInt(btn.getAttribute("data-cycle-qa"), 10);
+          const order = ["OPEN", "IN QA", "RESOLVED"];
+          const next = order[(order.indexOf(qaLogs[idx].status) + 1) % order.length];
+          qaLogs[idx].status = next;
+          saveQaLogs();
+          renderQaLogs();
+          showToast(`${qaLogs[idx].id} status updated to ${next}.`);
+        });
+      });
+    }
+
+    // =========================================================================
+    // 7. EVENT LISTENERS & INITIALIZATION
+    // =========================================================================
+    function refreshAllViews() {
+      renderKpiCards();
+      renderCharts();
+      renderBenchmarkTable();
+      renderCooRecommendations();
+    }
+
+    // Global Brand & Date Filters
+    document.getElementById("brandFilter").addEventListener("change", (e) => {
+      currentBrand = e.target.value;
+      highlightedBrand = null;
+      refreshAllViews();
+    });
+
+    document.getElementById("dateFilter").addEventListener("change", (e) => {
+      currentDate = e.target.value;
+      refreshAllViews();
+    });
+
+    // Tab Switcher
+    document.querySelectorAll(".tab-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const targetId = btn.getAttribute("data-tab");
+        document.querySelectorAll(".tab-btn").forEach(b => {
+          b.classList.remove("active", "bg-sky-500/15", "text-sky-300", "border-sky-500/30");
+          b.classList.add("text-slate-400", "border-transparent");
+        });
+        btn.classList.add("active", "bg-sky-500/15", "text-sky-300", "border-sky-500/30");
+        btn.classList.remove("text-slate-400", "border-transparent");
+
+        document.querySelectorAll(".tab-panel").forEach(panel => panel.classList.add("hidden"));
+        document.getElementById(targetId).classList.remove("hidden");
+
+        if (targetId === "tab-kpis") {
+          renderCharts();
+        }
+      });
+    });
+
+    // QA Form Toggle & Submission
+    const qaFormContainer = document.getElementById("qaFormContainer");
+    document.getElementById("toggleQaModalBtn").addEventListener("click", () => {
+      qaFormContainer.classList.toggle("hidden");
+    });
+    document.getElementById("cancelQaFormBtn").addEventListener("click", () => {
+      qaFormContainer.classList.add("hidden");
+    });
+
+    document.getElementById("qaIssueForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      // Auto-increment sequential ID
+      const maxNum = qaLogs.reduce((max, item) => {
+        const num = parseInt(item.id.replace("QA-", ""), 10);
+        return num > max ? num : max;
+      }, 1040);
+      const nextId = `QA-${maxNum + 1}`;
+
+      const now = new Date();
+      const ts = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")} ${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
+
+      const newEntry = {
+        id: nextId,
+        timestamp: ts,
+        brand: document.getElementById("qaBrandInput").value,
+        stack: document.getElementById("qaStackInput").value,
+        category: document.getElementById("qaCategoryInput").value,
+        desc: document.getElementById("qaDescInput").value.trim(),
+        fix: document.getElementById("qaFixInput").value.trim(),
+        status: document.getElementById("qaStatusInput").value
+      };
+
+      qaLogs.unshift(newEntry);
+      saveQaLogs();
+      renderQaLogs();
+      e.target.reset();
+      qaFormContainer.classList.add("hidden");
+      showToast(`Logged ${nextId} to QA & Anomaly Audit Trail.`);
+    });
+
+    document.getElementById("resetQaBtn").addEventListener("click", () => {
+      qaLogs = [...DEFAULT_QA_LOGS];
+      saveQaLogs();
+      renderQaLogs();
+      showToast("QA & Anomaly Log reset to default portfolio baseline.");
+    });
+
+    // Copy COO Executive Brief to Clipboard (using execCommand fallback for iframe compatibility)
+    document.getElementById("copyBriefBtn").addEventListener("click", () => {
+      const m = getAggregatedMetrics(currentBrand, currentDate);
+      const brief = [
+        `AJ MEDIA — COO OPERATIONS BRIEF (${currentBrand} | ${currentDate})`,
+        `• Avg Fulfillment Speed: ${m.fulfillHrs} hrs (${m.fulfillSla}% within 24h SLA)`,
+        `• Order Accuracy: ${m.accuracy}% | Portfolio Return Rate: ${m.returnRate}%`,
+        `• CS First-Response (Gorgias/AirCall): ${m.frtMins} mins`,
+        `• Key Action: Audit Kinetix Gear SKU #KX-402 return spike (5.4%) & finalize Veloce Coffee SOP sign-off.`
+      ].join("\n");
+
+      const tempArea = document.createElement("textarea");
+      tempArea.value = brief;
+      document.body.appendChild(tempArea);
+      tempArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(tempArea);
+      showToast("COO Executive Brief copied to clipboard.");
+    });
+
+    // Boot Dashboard
+    window.addEventListener("DOMContentLoaded", () => {
+      refreshAllViews();
+      renderLaunchMatrix();
+      renderStackHealth();
+      renderQaLogs();
+    });
+  </script>
+</body>
+</html>
